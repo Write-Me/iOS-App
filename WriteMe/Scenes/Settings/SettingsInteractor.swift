@@ -28,22 +28,22 @@ extension SettingsInteractor: SettingsBusinessLogic
 
     func loadSettings(_ viewModel: SettingsModel.ApplySettings.Request)
     {
-        presenter?.loadSettings(SettingsModel.ApplySettings.Response(settings: SettingsDataStore.shared.get()))
+        presenter?.loadSettings(SettingsModel.ApplySettings.Response(settings: SettingsDefaultsDataStore.shared.get()))
     }
     
     func switchIsRegionOn(_ viewModel: SettingsModel.ToggleIsRegionOn.Request)
     {
-        SettingsDataStore.shared.save(setting: .isRegionOn, value: !SettingsDataStore.shared.getBool(setting: .isRegionOn))
+        SettingsDefaultsDataStore.shared.save(setting: .isRegionOn, value: !SettingsDefaultsDataStore.shared.getBool(setting: .isRegionOn))
     }
     
     func toggleIsDefaultTextOn(_ viewModel: SettingsModel.ToggleIsDefaultTextOn.Request)
     {
-        SettingsDataStore.shared.save(setting: .isDefaultTextOn, value: !SettingsDataStore.shared.getBool(setting: .isDefaultTextOn))
+        SettingsDefaultsDataStore.shared.save(setting: .isDefaultTextOn, value: !SettingsDefaultsDataStore.shared.getBool(setting: .isDefaultTextOn))
     }
     
     func setDefaultText(_ viewModel: SettingsModel.SetDefaultText.Request)
     {
-        SettingsDataStore.shared.save(setting: .defaultText, value: viewModel.value)
+        SettingsDefaultsDataStore.shared.save(setting: .defaultText, value: viewModel.value)
     }
     
     

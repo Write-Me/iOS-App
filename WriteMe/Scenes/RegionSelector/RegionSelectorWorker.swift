@@ -15,9 +15,9 @@ import Combine
 
 class RegionSelectorWorker
 {
-    private let regionAPI: RegionProtocol
+    private let regionAPI: RegionStoreProtocol
     
-    init(regionAPI: RegionProtocol = RegionAPI()) {
+    init(regionAPI: RegionStoreProtocol = RegionAPI()) {
         self.regionAPI = regionAPI
     }
 }

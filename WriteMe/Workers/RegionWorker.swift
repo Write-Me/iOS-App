@@ -11,12 +11,12 @@ import Combine
 
 class RegionWorker
 {
-    private var service: RegionProtocol
+    private var service: RegionStoreProtocol
     @Published private(set) var regions: [Region] = []
     
     private var bindings = Set<AnyCancellable>()
     
-    init(service: RegionProtocol)
+    init(service: RegionStoreProtocol)
     {
         self.service = service
     }
@@ -35,9 +35,24 @@ class RegionWorker
             .store(in: &bindings)
     }
     
+    func saveRegions(regions: [Region])
+    {
+        let saveRegionsCompletionHandler: (Subscribers.Completion<Never>) -> Void = { completion in
+        }
+        
+        let saveRegionsValueHandler: ([Region]) -> Void = { [weak self] regions in
+            self?.regions = regions
+        }
+        
+        service.saveRegions(regions: regions)
+            .sink(receiveCompletion: saveRegionsCompletionHandler, receiveValue: saveRegionsValueHandler)
+            .store(in: &bindings)
+    }
+    
 }
 
-protocol RegionProtocol
+protocol RegionStoreProtocol
 {
     func fetchRegions(synchronous: Bool) -> AnyPublisher<[Region], Never>
+    func saveRegions(regions: [Region]) -> AnyPublisher<[Region], Never>
 }

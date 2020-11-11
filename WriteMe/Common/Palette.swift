@@ -12,6 +12,6 @@ extension UIColor {
     static func rgb(red: CGFloat, green: CGFloat, blue: CGFloat) -> UIColor {
         return UIColor.init(red: red/255, green: green/255, blue: blue/255, alpha: 1)
     }
-    static var watsapp = UIColor(named: "base-green") ?? .black
+    static var watsapp = UIColor.rgb(red: 37, green: 211, blue: 102)
     static var telegramm = UIColor.rgb(red: 0, green: 136, blue: 204)
 }

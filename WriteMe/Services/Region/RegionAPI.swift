@@ -13,8 +13,13 @@ fileprivate struct Envelope: Codable {
     let regions: [Region]
 }
 
-class RegionAPI: RegionProtocol
+class RegionAPI: RegionStoreProtocol
 {
+    func saveRegions(regions: [Region]) -> AnyPublisher<[Region], Never> {
+        return Future<[Region], Never> { promise in
+        }.eraseToAnyPublisher()
+    }
+    
     var localFile: URL
     {
         let fileURL = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask)[0].appendingPathComponent("points.json")

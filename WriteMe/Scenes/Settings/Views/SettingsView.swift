@@ -37,8 +37,9 @@ class SettingsView: UIView {
     public func setup(settings: Settings)
     {
         sections = [
-            Section(title: NSLocalizedString("RegionSettingTitle", comment: ""),
-                    rows: [
+            Section(
+                title: nil,
+                rows: [
                         NavigationRow(text: NSLocalizedString("RegionSelect", comment: ""), detailText: .value1("\(settings.region?.phoneCode ?? "") \(settings.region?.name ?? "")"),
                                       icon: .named("phone-code"), action: { _ in
                                         self.delegate?.router?.routeToRegionSelector()
@@ -48,17 +49,18 @@ class SettingsView: UIView {
                                     self.delegate?.interactor?.switchIsRegionOn(SettingsModel.ToggleIsRegionOn.Request())
                                   }),
                     ],
-                    footer: nil
+                footer: nil
             ),
-            Section(title: NSLocalizedString("WAppDefaultTextSettingTitle", comment: ""),
-                    rows: [
+            Section(
+                title: nil,
+                rows: [
                         InputRow(placeholder: NSLocalizedString("WAppDefaultTextSettingPlaceholder", comment: ""), inputValue: settings.defaultText, icon: .named("chat"), action: nil),
                         SwitchRow(text: NSLocalizedString("WAppDefaultTextSettingEnable", comment: ""), switchValue: settings.isDefaultTextOn,
                                   icon: .named("power"), action: { _ in
                                     self.delegate?.interactor?.toggleIsDefaultTextOn(SettingsModel.ToggleIsDefaultTextOn.Request())
                                   }),
                     ],
-                    footer: NSLocalizedString("WAppDefaultTextSettingFooter", comment: "")
+                footer: NSLocalizedString("WAppDefaultTextSettingFooter", comment: "")
             )
         ]
         tableView.reloadData()

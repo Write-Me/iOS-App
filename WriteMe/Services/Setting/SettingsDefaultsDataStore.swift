@@ -8,9 +8,9 @@
 
 import Foundation
 
-class SettingsDataStore: SettingsProtocol {
+class SettingsDefaultsDataStore: SettingsProtocol {
 
-    static public let shared = SettingsDataStore()
+    static public let shared = SettingsDefaultsDataStore()
     
     func get() -> Settings {
         return Settings(region: getObject(t: Region.self, setting: .region),

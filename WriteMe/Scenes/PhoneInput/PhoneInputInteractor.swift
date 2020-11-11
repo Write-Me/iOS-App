@@ -54,7 +54,7 @@ extension PhoneInputInteractor: PhoneInputBusinessLogic {
     private func getTextMessage() -> String
     {
         var defaultText: String = ""
-        let settings = SettingsDataStore.shared.get()
+        let settings = SettingsDefaultsDataStore.shared.get()
         if (settings.isDefaultTextOn)
         {
             defaultText += "&text=\(settings.defaultText ?? "")"
@@ -63,6 +63,6 @@ extension PhoneInputInteractor: PhoneInputBusinessLogic {
     }
     
     func loadSettings(_viewModel: PhoneInputModel.LoadSettings.Request) {
-        presenter?.loadSettings(_viewModel: PhoneInputModel.LoadSettings.Response(settings: SettingsDataStore.shared.get()))
+        presenter?.loadSettings(_viewModel: PhoneInputModel.LoadSettings.Response(settings: SettingsDefaultsDataStore.shared.get()))
     }
 }
