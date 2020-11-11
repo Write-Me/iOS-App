@@ -16,7 +16,7 @@ import RealmSwift
 //}
 
 class Region: Object, Codable {
-    @objc dynamic var id = 0
+    @objc dynamic var id = UUID().uuidString
     @objc dynamic var name = ""
     @objc dynamic var phoneCode = ""
     @objc dynamic var imageUrl: String? = nil

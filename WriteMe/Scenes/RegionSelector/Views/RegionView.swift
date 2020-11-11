@@ -90,4 +90,9 @@ extension RegionView: UITableViewDataSource, UITableViewDelegate
         viewController?.interactor?.saveRegion(reguest: RegionSelector.SaveRegion.Request(region: regions[indexPath.row]))
     }
     
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat
+    {
+        return 44
+    }
+    
 }

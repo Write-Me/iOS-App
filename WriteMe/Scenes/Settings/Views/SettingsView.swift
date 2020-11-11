@@ -92,19 +92,23 @@ class SettingsView: UIView {
 
 extension SettingsView: UITableViewDataSource, UITableViewDelegate {
     
-    func numberOfSections(in tableView: UITableView) -> Int {
+    func numberOfSections(in tableView: UITableView) -> Int
+    {
         return self.sections.count
     }
     
-    func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
+    func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String?
+    {
         return self.sections[section].title
     }
     
-    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int
+    {
         return self.sections[section].rows.count
     }
     
-    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell
+    {
         
         let row = sections[indexPath.section].rows[indexPath.row]
         let cell =
@@ -118,17 +122,20 @@ extension SettingsView: UITableViewDataSource, UITableViewDelegate {
         return cell
     }
     
-    open func tableView(_ tableView: UITableView, titleForFooterInSection section: Int) -> String? {
+    open func tableView(_ tableView: UITableView, titleForFooterInSection section: Int) -> String?
+    {
         return sections[section].footer
     }
     
     // MARK: - UITableViewDelegate
     
-    open func tableView(_ tableView: UITableView, shouldHighlightRowAt indexPath: IndexPath) -> Bool {
+    open func tableView(_ tableView: UITableView, shouldHighlightRowAt indexPath: IndexPath) -> Bool
+    {
         return sections[indexPath.section].rows[indexPath.row].isSelectable
     }
     
-    open func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+    open func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath)
+    {
         let section = sections[indexPath.section]
         let row = section.rows[indexPath.row]
         
@@ -165,7 +172,8 @@ extension SettingsView: UITableViewDataSource, UITableViewDelegate {
         }
     }
     
-    public func tableView(_ tableView: UITableView, accessoryButtonTappedForRowWith indexPath: IndexPath) {
+    public func tableView(_ tableView: UITableView, accessoryButtonTappedForRowWith indexPath: IndexPath)
+    {
         switch sections[indexPath.section].rows[indexPath.row] {
         case let row as NavigationRowCompatible:
             DispatchQueue.main.async {
@@ -174,6 +182,11 @@ extension SettingsView: UITableViewDataSource, UITableViewDelegate {
         default:
             break
         }
+    }
+    
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat
+    {
+        return 44
     }
     
 }

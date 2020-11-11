@@ -20,4 +20,4 @@
 "WAppDefaultTextSettingTitle" = "Message text";
 "WAppDefaultTextSettingFooter" = "This text is default for chat";
 "WAppDefaultTextSettingPlaceholder" = "Default chat text";
-"WAppDefaultTextSettingEnable" = "Default text";
+"WAppDefaultTextSettingEnable" = "Use default text";

@@ -191,8 +191,8 @@
 		805076D02526FBFA0008678A /* Workers */ = {
 			isa = PBXGroup;
 			children = (
-				805076D12526FC1A0008678A /* SettingsWorker.swift */,
 				80F5C0B8252DC18A00A9837B /* RegionWorker.swift */,
+				805076D12526FC1A0008678A /* SettingsWorker.swift */,
 			);
 			path = Workers;
 			sourceTree = "<group>";

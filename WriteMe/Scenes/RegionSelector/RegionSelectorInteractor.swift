@@ -40,7 +40,7 @@ class RegionSelectorInteractor: RegionSelectorBusinessLogic, RegionSelectorDataS
         self.regionApiWorker = regionApiWorker
         self.regionRealmWorker = regionRealmWorker
         bind()
-//        sync()
+        sync()
     }
     
     private func bind()

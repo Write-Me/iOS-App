@@ -117,7 +117,7 @@ class IntputCellContentView: UIView, UITextFieldDelegate {
     {
         let viewConstraints = [
             textField.leftAnchor.constraint(equalTo: leftAnchor, constant: 16.0),
-            textField.rightAnchor.constraint(equalTo: rightAnchor, constant: 0.0),
+            textField.rightAnchor.constraint(equalTo: rightAnchor, constant: -8.0),
             textField.topAnchor.constraint(equalTo: topAnchor, constant: 0),
             textField.bottomAnchor.constraint(equalTo: bottomAnchor, constant: 0),
         ]
