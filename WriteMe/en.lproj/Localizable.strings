@@ -1,0 +1,23 @@
+/* 
+  Localizable.strings
+  WriteMe
+
+  Created by Vladimir Mikhaylov on 03.09.2020.
+  Copyright © 2020 Vladimir Mikhaylov. All rights reserved.
+*/
+
+"EnterPhone" = "Enter phone";
+"Phone" = "Phone";
+"Settings" = "Settings";
+"AboutApp" = "About app";
+
+
+//Settings
+"RegionSettingTitle" = "Region";
+"RegionSettingFooter" = "Select phone code of your region";
+"RegionSelect" = "Select region";
+"RegionUse" = "Use region";
+"WAppDefaultTextSettingTitle" = "Message text";
+"WAppDefaultTextSettingFooter" = "This text is default for chat";
+"WAppDefaultTextSettingPlaceholder" = "Default chat text";
+"WAppDefaultTextSettingEnable" = "Default text";

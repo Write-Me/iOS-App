@@ -1,0 +1,22 @@
+/* 
+  Localizable.strings
+  WriteMe
+
+  Created by Vladimir Mikhaylov on 03.09.2020.
+  Copyright © 2020 Vladimir Mikhaylov. All rights reserved.
+*/
+
+"EnterPhone" = "Введи телефон";
+"Phone" = "Телефон";
+"Settings" = "Настройки";
+"AboutApp" = "О приложении";
+
+//Settings
+"RegionSettingTitle" = "Регион";
+"RegionSettingFooter" = "Укажите телефонный код вашего региона";
+"RegionSelect" = "Выбрать регион";
+"RegionUse" = "Использовать регион";
+"WAppDefaultTextSettingTitle" = "Текст сообщения";
+"WAppDefaultTextSettingFooter" = "Этот текст будет по умолчанию выбираться в диалоге";
+"WAppDefaultTextSettingPlaceholder" = "Текcт по умолчанию";
+"WAppDefaultTextSettingEnable" = "По умолчанию";

@@ -1,0 +1,19 @@
+{
+    "regions": [
+        {
+            "name": "Russia",
+            "phoneCode": "+7",
+            "imageUrl": "image"
+        },
+        {
+            "name": "USA",
+            "phoneCode": "+1",
+            "imageUrl": "image"
+        },
+        {
+            "name": "China",
+            "phoneCode": "+2",
+            "imageUrl": "image"
+        }
+    ]
+}
