@@ -57,6 +57,4 @@ extension PhoneInputPresenter: PhoneInputPresentationLogic {
             Animation.share.shake(view: view)
         }
     }
-    
-    
 }

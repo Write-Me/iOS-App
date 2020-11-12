@@ -10,7 +10,7 @@ import UIKit
 
 @objc protocol SettingsRoutingLogic
 {
-  func routeToRegionSelector()
+    func routeToRegionSelector()    
 }
 
 class SettingsRouter: NSObject, SettingsRoutingLogic {

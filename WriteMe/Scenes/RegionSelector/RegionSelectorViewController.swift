@@ -90,6 +90,12 @@ class RegionSelectorViewController: UIViewController, RegionSelectorDisplayLogic
     override func viewDidLoad()
     {
         super.viewDidLoad()
+        
+    }
+    
+    override func viewWillAppear(_ animated: Bool)
+    {
+        super.viewWillAppear(animated)
         loadRegions()
     }
     

@@ -8,12 +8,14 @@
 
 import UIKit
 
-protocol SettingsViewControllerProtocol: class {
+protocol SettingsViewControllerProtocol: class
+{
     var contentView: SettingsView { get }
     func loadSettings(_ viewModel: SettingsModel.ApplySettings.ViewModel)
 }
 
-class SettingsViewController: UIViewController {
+class SettingsViewController: UIViewController
+{
     
     internal lazy var contentView: SettingsView = {
         let view = SettingsView()
@@ -24,29 +26,25 @@ class SettingsViewController: UIViewController {
     var router: (NSObjectProtocol & SettingsRoutingLogic)?
     public var phoneInputViewController: PhoneInputViewController?
     
-    override func loadView() {
+    override func loadView()
+    {
         view = contentView
     }
     
-    override func viewDidLoad() {
+    override func viewDidLoad()
+    {
         super.viewDidLoad()
         setup()
+    }
+    
+    override func viewWillAppear(_ animated: Bool)
+    {
+        super.viewWillAppear(animated)
         loadData()
-        setupView()
     }
     
-    override func viewWillDisappear(_ animated: Bool) {
-        super.viewWillDisappear(animated)
-        phoneInputViewController?.setupData()
-    }
-    
-    private func setupView() {
-        view.backgroundColor = UIColor(named: "background")
-        navigationController?.navigationBar.prefersLargeTitles = false
-        navigationItem.title = NSLocalizedString("Settings", comment: "")
-    }
-    
-    private func setup() {
+    private func setup()
+    {
         let viewController = self
         let interactor = SettingsInteractor()
         let router = SettingsRouter()
@@ -56,14 +54,24 @@ class SettingsViewController: UIViewController {
         presenter.viewController = viewController
         router.viewController = viewController
         viewController.router = router
+        setupView()
     }
     
-    private func loadData() {
+    private func setupView()
+    {
+        view.backgroundColor = UIColor(named: "background")
+        navigationController?.navigationBar.prefersLargeTitles = false
+        navigationItem.title = NSLocalizedString("Settings", comment: "")
+    }
+    
+    private func loadData()
+    {
         interactor?.loadSettings(SettingsModel.ApplySettings.Request())
     }
 }
 
-extension SettingsViewController: SettingsViewControllerProtocol {
+extension SettingsViewController: SettingsViewControllerProtocol
+{
     func loadSettings(_ viewModel: SettingsModel.ApplySettings.ViewModel) {
         contentView.setup(settings: viewModel.settings)
     }

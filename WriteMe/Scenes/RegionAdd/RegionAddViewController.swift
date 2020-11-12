@@ -54,6 +54,17 @@ class RegionAddViewController: UIViewController, RegionAddDisplayLogic
         setupView()
     }
     
+    private func setupView()
+    {
+        view.backgroundColor = UIColor(named: "background")
+        navigationController?.navigationBar.prefersLargeTitles = false
+        navigationItem.title = NSLocalizedString("RegionAdd", comment: "")
+        navigationItem.rightBarButtonItem = UIBarButtonItem(title: NSLocalizedString("Save", comment: ""),
+                                                            style: .plain,
+                                                            target: self,
+                                                            action: #selector(navigateToRegionsSelector))
+    }
+    
     // MARK: View lifecycle
     
     override func loadView()
@@ -65,19 +76,6 @@ class RegionAddViewController: UIViewController, RegionAddDisplayLogic
     {
         super.viewDidLoad()
         doSomething()
-    }
-    
-    // MARK: Do something
-    
-    private func setupView()
-    {
-        view.backgroundColor = UIColor(named: "background")
-        navigationController?.navigationBar.prefersLargeTitles = false
-        navigationItem.title = NSLocalizedString("RegionAdd", comment: "")
-        navigationItem.rightBarButtonItem = UIBarButtonItem(title: NSLocalizedString("Save", comment: ""),
-                                                            style: .plain,
-                                                            target: self,
-                                                            action: #selector(navigateToRegionsSelector))
     }
     
     func doSomething()

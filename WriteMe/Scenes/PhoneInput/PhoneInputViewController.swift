@@ -8,36 +8,37 @@
 
 import UIKit
 
-protocol PhoneInputViewControllerProtocol: class {
+protocol PhoneInputViewControllerProtocol: class
+{
     var contentView: PhoneInputView { get }
     func socialAppOpenError(_ viewModel: PhoneInputModel.ToApp.ViewModel)
 }
 
-class PhoneInputViewController: UIViewController {
+class PhoneInputViewController: UIViewController
+{
     
     internal lazy var contentView = PhoneInputView()
     var interactor: PhoneInputBusinessLogic?
     var router: PhoneInputRoutingLogic?
     
-    override func loadView() {
+    override func loadView()
+    {
         view = contentView
     }
     
-    override func viewDidLoad() {
+    override func viewDidLoad()
+    {
         super.viewDidLoad()
+    }
+    
+    override func viewWillAppear(_ animated: Bool)
+    {
+        super.viewWillAppear(animated)
         setup()
     }
     
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
-        
-    }
-    
-    override func viewDidAppear(_ animated: Bool) {
-        super.viewDidAppear(animated)
-    }
-    
-    private func setup() {
+    private func setup()
+    {
         let interactor = PhoneInputInteractor()
         let router = PhoneInputRouter()
         let presenter = PhoneInputPresenter(interactor: interactor)
@@ -51,7 +52,8 @@ class PhoneInputViewController: UIViewController {
         setupData()
     }
     
-    private func setupView() {
+    private func setupView()
+    {
         navigationController?.navigationBar.prefersLargeTitles = true
         navigationItem.title = NSLocalizedString("EnterPhone", comment: "")
         navigationItem.rightBarButtonItem = UIBarButtonItem(image: UIImage(systemName: "gear"),
@@ -60,26 +62,39 @@ class PhoneInputViewController: UIViewController {
                                                             action: #selector(openInfo))
     }
     
-    private func setupTargets() {
+    private func setupTargets()
+    {
         contentView.whatsAppButton.addTarget(self, action: #selector(toApp(_:)), for: .touchUpInside)
         contentView.telegrammAppButton.addTarget(self, action: #selector(toApp(_:)), for: .touchUpInside)
     }
     
-    public func setupData() {
+    public func setupData()
+    {
         interactor?.loadSettings(_viewModel: PhoneInputModel.LoadSettings.Request())
     }
     
-    @objc private func toApp(_ target: SocialButton) {
+    @objc private func toApp(_ target: SocialButton)
+    {
         Animation.share.pickAndPop(view: target)
         interactor?.toApp(PhoneInputModel.ToApp.Request(socialType: target.type, phone: contentView.phoneInputView.phoneTextField.text, sender: target))
     }
     
-    @objc private func openInfo() {
+    @objc private func openInfo()
+    {
         router?.routeToSettings()
     }
 }
 
-extension PhoneInputViewController: PhoneInputViewControllerProtocol {
-    func socialAppOpenError(_ viewModel: PhoneInputModel.ToApp.ViewModel) {
+extension PhoneInputViewController: PhoneInputViewControllerProtocol
+{
+    func socialAppOpenError(_ viewModel: PhoneInputModel.ToApp.ViewModel)
+    {
+    }
+}
+
+extension PhoneInputViewController: UIAdaptivePresentationControllerDelegate
+{
+    func presentationControllerWillDismiss(_ presentationController: UIPresentationController) {
+        viewWillAppear(true)
     }
 }

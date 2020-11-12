@@ -27,6 +27,7 @@ extension PhoneInputRouter: PhoneInputRoutingLogic {
         let vc = SettingsViewController()
         vc.phoneInputViewController = viewController
         nc.viewControllers = [vc]
+        nc.presentationController?.delegate = viewController
         navigateToSettings(source: viewController, destination: nc)
     }
 }

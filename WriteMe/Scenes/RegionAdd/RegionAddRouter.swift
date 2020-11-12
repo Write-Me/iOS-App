@@ -39,7 +39,6 @@ class RegionAddRouter: NSObject, RegionAddRoutingLogic, RegionAddDataPassing
         guard var destinationDS = destinationVC.router?.dataStore else { return }
         passDataToRegionsSelector(source: dataStore, destination: &destinationDS)
         navigateToRegionsSelector(source: viewController, destination: destinationVC)
-        destinationVC.loadRegions()
     }
     
     // MARK: Navigation
