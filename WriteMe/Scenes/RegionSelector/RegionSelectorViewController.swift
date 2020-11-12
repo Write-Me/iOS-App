@@ -62,6 +62,10 @@ class RegionSelectorViewController: UIViewController, RegionSelectorDisplayLogic
         view.backgroundColor = UIColor(named: "background")
         navigationController?.navigationBar.prefersLargeTitles = false
         navigationItem.title = NSLocalizedString("RegionSelect", comment: "")
+        navigationItem.rightBarButtonItem = UIBarButtonItem(image: UIImage(systemName: "plus"),
+                                                            style: .plain,
+                                                            target: self ,
+                                                            action: #selector(openRegionAdd))
     }
     
     // MARK: Routing
@@ -101,6 +105,10 @@ class RegionSelectorViewController: UIViewController, RegionSelectorDisplayLogic
     }
     
     func saveRegion(viewModel: RegionSelector.SaveRegion.ViewModel) {
-        router?.routeSettings()
+        router?.routeToSettings()
+    }
+    
+    @objc private func openRegionAdd() {
+        router?.routeToRegionAdd()
     }
 }

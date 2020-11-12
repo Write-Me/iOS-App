@@ -54,12 +54,10 @@ class PhoneInputViewController: UIViewController {
     private func setupView() {
         navigationController?.navigationBar.prefersLargeTitles = true
         navigationItem.title = NSLocalizedString("EnterPhone", comment: "")
-        let infoButton = SettingsButton()
-        infoButton.addTarget(self, action: #selector(openInfo), for: .touchUpInside)
-        let infoBarItem = UIBarButtonItem(customView: infoButton)
-        infoBarItem.customView?.heightAnchor.constraint(equalToConstant: 30).isActive = true
-        infoBarItem.customView?.widthAnchor.constraint(equalToConstant: 30).isActive = true
-        navigationItem.rightBarButtonItem = infoBarItem
+        navigationItem.rightBarButtonItem = UIBarButtonItem(image: UIImage(systemName: "gear"),
+                                                            style: .plain,
+                                                            target: self ,
+                                                            action: #selector(openInfo))
     }
     
     private func setupTargets() {

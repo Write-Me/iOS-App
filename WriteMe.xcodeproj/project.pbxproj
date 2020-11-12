@@ -36,6 +36,13 @@
 		807C7B8A2520B22500F0AB31 /* NavigationRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 807C7B892520B22500F0AB31 /* NavigationRow.swift */; };
 		807C7B982520B95400F0AB31 /* RadioSection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 807C7B972520B95400F0AB31 /* RadioSection.swift */; };
 		807C7B9D2520B98E00F0AB31 /* OptionRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 807C7B9C2520B98E00F0AB31 /* OptionRow.swift */; };
+		80BAABD7255D815C00BAAF8B /* RegionAddPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80BAABD1255D815C00BAAF8B /* RegionAddPresenter.swift */; };
+		80BAABD8255D815C00BAAF8B /* RegionAddWorker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80BAABD2255D815C00BAAF8B /* RegionAddWorker.swift */; };
+		80BAABD9255D815C00BAAF8B /* RegionAddRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80BAABD3255D815C00BAAF8B /* RegionAddRouter.swift */; };
+		80BAABDA255D815C00BAAF8B /* RegionAddModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80BAABD4255D815C00BAAF8B /* RegionAddModels.swift */; };
+		80BAABDB255D815C00BAAF8B /* RegionAddViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80BAABD5255D815C00BAAF8B /* RegionAddViewController.swift */; };
+		80BAABDC255D815C00BAAF8B /* RegionAddInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80BAABD6255D815C00BAAF8B /* RegionAddInteractor.swift */; };
+		80BAABE3255D81D000BAAF8B /* RegionAddView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80BAABE2255D81D000BAAF8B /* RegionAddView.swift */; };
 		80EEA3042509F69D00592DD8 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 80EEA3032509F69D00592DD8 /* Main.storyboard */; };
 		80F16CBE250A13B6005524C6 /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80F16CBD250A13B6005524C6 /* SettingsViewController.swift */; };
 		80F16CC0250A1486005524C6 /* PhoneInputRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80F16CBF250A1486005524C6 /* PhoneInputRouter.swift */; };
@@ -117,6 +124,13 @@
 		807C7B892520B22500F0AB31 /* NavigationRow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigationRow.swift; sourceTree = "<group>"; };
 		807C7B972520B95400F0AB31 /* RadioSection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RadioSection.swift; sourceTree = "<group>"; };
 		807C7B9C2520B98E00F0AB31 /* OptionRow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OptionRow.swift; sourceTree = "<group>"; };
+		80BAABD1255D815C00BAAF8B /* RegionAddPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegionAddPresenter.swift; sourceTree = "<group>"; };
+		80BAABD2255D815C00BAAF8B /* RegionAddWorker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegionAddWorker.swift; sourceTree = "<group>"; };
+		80BAABD3255D815C00BAAF8B /* RegionAddRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegionAddRouter.swift; sourceTree = "<group>"; };
+		80BAABD4255D815C00BAAF8B /* RegionAddModels.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegionAddModels.swift; sourceTree = "<group>"; };
+		80BAABD5255D815C00BAAF8B /* RegionAddViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegionAddViewController.swift; sourceTree = "<group>"; };
+		80BAABD6255D815C00BAAF8B /* RegionAddInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegionAddInteractor.swift; sourceTree = "<group>"; };
+		80BAABE2255D81D000BAAF8B /* RegionAddView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegionAddView.swift; sourceTree = "<group>"; };
 		80EEA3032509F69D00592DD8 /* Main.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
 		80F16CBD250A13B6005524C6 /* SettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
 		80F16CBF250A1486005524C6 /* PhoneInputRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhoneInputRouter.swift; sourceTree = "<group>"; };
@@ -269,6 +283,28 @@
 			path = Cells;
 			sourceTree = "<group>";
 		};
+		80BAABE0255D816500BAAF8B /* RegionAdd */ = {
+			isa = PBXGroup;
+			children = (
+				80BAABE1255D81BD00BAAF8B /* View */,
+				80BAABD5255D815C00BAAF8B /* RegionAddViewController.swift */,
+				80BAABD1255D815C00BAAF8B /* RegionAddPresenter.swift */,
+				80BAABD2255D815C00BAAF8B /* RegionAddWorker.swift */,
+				80BAABD3255D815C00BAAF8B /* RegionAddRouter.swift */,
+				80BAABD4255D815C00BAAF8B /* RegionAddModels.swift */,
+				80BAABD6255D815C00BAAF8B /* RegionAddInteractor.swift */,
+			);
+			path = RegionAdd;
+			sourceTree = "<group>";
+		};
+		80BAABE1255D81BD00BAAF8B /* View */ = {
+			isa = PBXGroup;
+			children = (
+				80BAABE2255D81D000BAAF8B /* RegionAddView.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
 		80EEA3052509FB3B00592DD8 /* Settings */ = {
 			isa = PBXGroup;
 			children = (
@@ -314,11 +350,11 @@
 			isa = PBXGroup;
 			children = (
 				80F5C0A3252DBBA900A9837B /* Views */,
+				D677A7912528BB1200E430A0 /* RegionSelectorViewController.swift */,
 				D677A7922528BB1200E430A0 /* RegionSelectorInteractor.swift */,
 				D677A7902528BB1200E430A0 /* RegionSelectorModels.swift */,
 				D677A78D2528BB1200E430A0 /* RegionSelectorPresenter.swift */,
 				D677A78F2528BB1200E430A0 /* RegionSelectorRouter.swift */,
-				D677A7912528BB1200E430A0 /* RegionSelectorViewController.swift */,
 				D677A78E2528BB1200E430A0 /* RegionSelectorWorker.swift */,
 			);
 			path = RegionSelector;
@@ -398,6 +434,7 @@
 		D69BBC2F24F7CAAD00B74B5A /* Scenes */ = {
 			isa = PBXGroup;
 			children = (
+				80BAABE0255D816500BAAF8B /* RegionAdd */,
 				D677A79C2528BB1D00E430A0 /* RegionSelector */,
 				80EEA3052509FB3B00592DD8 /* Settings */,
 				D69BBC2E24F7C90200B74B5A /* PhoneInput */,
@@ -421,8 +458,8 @@
 			children = (
 				D6EEDECF24FD2DA600EC169B /* Palette.swift */,
 				D6EEDEDA2500F91E00EC169B /* Animation.swift */,
-				80F5C0B1252DBF9700A9837B /* regions.json */,
 				8017266925306AFF002945C3 /* Extension.swift */,
+				80F5C0B1252DBF9700A9837B /* regions.json */,
 			);
 			path = Common;
 			sourceTree = "<group>";
@@ -592,6 +629,7 @@
 				807C7B5525208DEF00F0AB31 /* DetailText.swift in Sources */,
 				805076DD252701FA0008678A /* SettingsPresenter.swift in Sources */,
 				8073CB1D251C1B2800F5BB44 /* SettingsView.swift in Sources */,
+				80BAABDC255D815C00BAAF8B /* RegionAddInteractor.swift in Sources */,
 				805076D82526FD0C0008678A /* SettingsDefaultsDataStore.swift in Sources */,
 				805076E7252709350008678A /* Settings.swift in Sources */,
 				D69BBC3724F7CB3F00B74B5A /* PhoneInputPresener.swift in Sources */,
@@ -609,6 +647,7 @@
 				D677A7932528BB1200E430A0 /* RegionSelectorPresenter.swift in Sources */,
 				80F5C0AD252DBF2700A9837B /* Region.swift in Sources */,
 				807C7B752520AA9900F0AB31 /* TapActionCell.swift in Sources */,
+				80BAABDA255D815C00BAAF8B /* RegionAddModels.swift in Sources */,
 				80F16CC4250A1720005524C6 /* SettingsButton.swift in Sources */,
 				807C7B4625208D3600F0AB31 /* Row.swift in Sources */,
 				805076CC2526F9B70008678A /* SettingsInteractor.swift in Sources */,
@@ -616,6 +655,8 @@
 				80F5C0A5252DBC8700A9837B /* RegionView.swift in Sources */,
 				807C7B6825208F3800F0AB31 /* SwitchRow.swift in Sources */,
 				D677A7A12528BBA700E430A0 /* SettingsRouter.swift in Sources */,
+				80BAABD8255D815C00BAAF8B /* RegionAddWorker.swift in Sources */,
+				80BAABD9255D815C00BAAF8B /* RegionAddRouter.swift in Sources */,
 				D677A7942528BB1200E430A0 /* RegionSelectorWorker.swift in Sources */,
 				807C7B9D2520B98E00F0AB31 /* OptionRow.swift in Sources */,
 				80F5C0C1252DC54100A9837B /* RegionAPI.swift in Sources */,
@@ -624,6 +665,8 @@
 				D6EEDED724FFD4A400EC169B /* SocialType.swift in Sources */,
 				8017264725305120002945C3 /* InputCell.swift in Sources */,
 				8017266A25306AFF002945C3 /* Extension.swift in Sources */,
+				80BAABDB255D815C00BAAF8B /* RegionAddViewController.swift in Sources */,
+				80BAABE3255D81D000BAAF8B /* RegionAddView.swift in Sources */,
 				D69BBBFF24F7C74800B74B5A /* AppDelegate.swift in Sources */,
 				805617A3255C1A0000B7F93B /* RegionRealmDataStore.swift in Sources */,
 				D69BBC4124F7DF8A00B74B5A /* SocialButton.swift in Sources */,
@@ -639,6 +682,7 @@
 				D69BBC3324F7CB0100B74B5A /* PhoneInputViewController.swift in Sources */,
 				D6EEDEDB2500F91E00EC169B /* Animation.swift in Sources */,
 				807C7B3325208C8F00F0AB31 /* SwitchCell.swift in Sources */,
+				80BAABD7255D815C00BAAF8B /* RegionAddPresenter.swift in Sources */,
 				D69BBC3524F7CB2900B74B5A /* PhoneInputInteractor.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

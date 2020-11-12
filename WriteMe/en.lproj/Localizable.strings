@@ -17,7 +17,11 @@
 "RegionSettingFooter" = "Select phone code of your region";
 "RegionSelect" = "Select region";
 "RegionUse" = "Use region";
+"RegionAdd" = "Add region";
+
 "WAppDefaultTextSettingTitle" = "Message text";
 "WAppDefaultTextSettingFooter" = "This text is default for chat";
 "WAppDefaultTextSettingPlaceholder" = "Default chat text";
 "WAppDefaultTextSettingEnable" = "Use default text";
+
+"Save" = "Save";

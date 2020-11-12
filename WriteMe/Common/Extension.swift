@@ -7,6 +7,7 @@
 //
 
 import Foundation
+import UIKit
 
 extension String{
     var encodeUrl : String
@@ -16,5 +17,11 @@ extension String{
     var decodeUrl : String
     {
         return self.removingPercentEncoding!
+    }
+}
+
+extension UINavigationController {
+    var previousViewController: UIViewController? {
+       viewControllers.count > 1 ? viewControllers[viewControllers.count - 2] : nil
     }
 }

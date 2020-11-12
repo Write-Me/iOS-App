@@ -14,7 +14,8 @@ import UIKit
 
 @objc protocol RegionSelectorRoutingLogic
 {
-    func routeSettings()
+    func routeToSettings()
+    func routeToRegionAdd()
 }
 
 protocol RegionSelectorDataPassing
@@ -30,21 +31,40 @@ class RegionSelectorRouter: NSObject, RegionSelectorRoutingLogic, RegionSelector
     
     // MARK: Routing
     
-    func routeSettings()
+    func routeToSettings()
     {
-        passDataToSettings()
-        navigateToSettings()
+        guard let viewController = viewController else { return }
+        passDataToSettings(source: viewController)
+        navigateToSettings(source: viewController)
+    }
+    
+    func routeToRegionAdd()
+    {
+        guard let viewController = viewController else { return }
+        let regionAdd = RegionAddViewController()
+        passDataToRegionAdd(source: viewController, destination: regionAdd)
+        navigateToRegionAdd(source: viewController, destination: regionAdd)
     }
     
     // MARK: Navigation
     
-    private func passDataToSettings()
+    private func navigateToSettings(source: RegionSelectorViewController?)
     {
-        viewController?.settingsViewController?.interactor?.loadSettings(SettingsModel.ApplySettings.Request())
+        source?.navigationController?.popViewController(animated: true)
     }
     
-    private func navigateToSettings()
+    private func navigateToRegionAdd(source: RegionSelectorViewController, destination: RegionAddViewController)
     {
-        viewController?.navigationController?.popViewController(animated: true)
+        source.navigationController?.pushViewController(destination, animated: true)
+    }
+    
+    // MARK: Passing data
+    private func passDataToSettings(source: RegionSelectorViewController)
+    {
+        source.settingsViewController?.interactor?.loadSettings(SettingsModel.ApplySettings.Request())
+    }
+    
+    private func passDataToRegionAdd(source: RegionSelectorViewController, destination: RegionAddViewController)
+    {
     }
 }
