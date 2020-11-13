@@ -15,28 +15,24 @@ protocol PhoneInputPresentationLogic {
     func loadSettings(_viewModel: PhoneInputModel.LoadSettings.Response)
 }
 
-class PhoneInputPresenter {
+class PhoneInputPresenter
+{
     
     weak var viewController: PhoneInputViewControllerProtocol?
-    private var interactor: PhoneInputBusinessLogic
     var listener = MaskedTextFieldDelegate()
     
-    init(interactor: PhoneInputBusinessLogic) {
-        self.interactor = interactor
-    }
-    
     public func setup(settings: Settings) {
-        if (viewController?.contentView.phoneInputView.phoneTextField.isFirstResponder ?? false) {
-            viewController?.contentView.phoneInputView.phoneTextField.text = nil
+        if (viewController?.contentView.phoneInputView.inputTextField.isFirstResponder ?? false) {
+            viewController?.contentView.phoneInputView.inputTextField.text = nil
         }
         if (settings.isRegionOn) {
             let regionPhoneCode = settings.region?.phoneCode ?? "+7"
             listener.primaryMaskFormat = "\(regionPhoneCode)[000000000000000000000000]"
-            viewController?.contentView.phoneInputView.phoneTextField.keyboardType = .decimalPad
-            viewController?.contentView.phoneInputView.phoneTextField.delegate = listener
+            viewController?.contentView.phoneInputView.inputTextField.keyboardType = .decimalPad
+            viewController?.contentView.phoneInputView.inputTextField.delegate = listener
         } else {
-            viewController?.contentView.phoneInputView.phoneTextField.keyboardType = .default
-            viewController?.contentView.phoneInputView.phoneTextField.delegate = nil
+            viewController?.contentView.phoneInputView.inputTextField.keyboardType = .default
+            viewController?.contentView.phoneInputView.inputTextField.delegate = nil
         }
     }
 }

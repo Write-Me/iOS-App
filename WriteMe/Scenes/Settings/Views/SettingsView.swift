@@ -11,8 +11,12 @@ import UIKit
 class SettingsView: UIView {
     
     private let cellID = "cellID"
-    private var sections: [Section] = []
     public var delegate: SettingsViewController?
+    private var sections: [Section] = [] {
+        didSet {
+            tableView.reloadData()
+        }
+    }
     
     lazy var tableView: UITableView = {
         let tableView = UITableView(frame: .zero, style: .insetGrouped)
@@ -63,7 +67,6 @@ class SettingsView: UIView {
                 footer: NSLocalizedString("WAppDefaultTextSettingFooter", comment: "")
             )
         ]
-        tableView.reloadData()
     }
     
     private func addSubviews()

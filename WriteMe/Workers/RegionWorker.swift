@@ -49,10 +49,16 @@ class RegionWorker
             .store(in: &bindings)
     }
     
+    func saveRegion(region: Region)
+    {
+        service.saveRegion(region: region)
+    }
+    
 }
 
 protocol RegionStoreProtocol
 {
     func fetchRegions(synchronous: Bool) -> AnyPublisher<[Region], Never>
     func saveRegions(regions: [Region]) -> AnyPublisher<[Region], Never>
+    func saveRegion(region: Region) -> AnyPublisher<Region, Never>
 }

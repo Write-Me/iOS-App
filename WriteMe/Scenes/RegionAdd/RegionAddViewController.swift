@@ -14,7 +14,9 @@ import UIKit
 
 protocol RegionAddDisplayLogic: class
 {
-    func displaySomething(viewModel: RegionAdd.Something.ViewModel)
+    var contentView: RegionAddView { get }
+    func setup(viewModel: RegionAdd.Setup.ViewModel)
+    func save(viewModel: RegionAdd.Save.ViewModel)
 }
 
 class RegionAddViewController: UIViewController, RegionAddDisplayLogic
@@ -56,13 +58,12 @@ class RegionAddViewController: UIViewController, RegionAddDisplayLogic
     
     private func setupView()
     {
-        view.backgroundColor = UIColor(named: "background")
         navigationController?.navigationBar.prefersLargeTitles = false
         navigationItem.title = NSLocalizedString("RegionAdd", comment: "")
         navigationItem.rightBarButtonItem = UIBarButtonItem(title: NSLocalizedString("Save", comment: ""),
                                                             style: .plain,
                                                             target: self,
-                                                            action: #selector(navigateToRegionsSelector))
+                                                            action: #selector(saveClicked))
     }
     
     // MARK: View lifecycle
@@ -75,20 +76,32 @@ class RegionAddViewController: UIViewController, RegionAddDisplayLogic
     override func viewDidLoad()
     {
         super.viewDidLoad()
-        doSomething()
+        
     }
     
-    func doSomething()
+    override func viewWillAppear(_ animated: Bool)
+    {
+        super.viewWillAppear(animated)
+        setupData()
+    }
+    
+    func setupData()
+    {
+        interactor?.setup(request: RegionAdd.Setup.Request())
+    }
+    
+    func setup(viewModel: RegionAdd.Setup.ViewModel)
     {
     }
     
-    func displaySomething(viewModel: RegionAdd.Something.ViewModel)
-    {
-        //nameTextField.text = viewModel.name
-    }
-    
-    @objc private func navigateToRegionsSelector()
+    func save(viewModel: RegionAdd.Save.ViewModel)
     {
         router?.routeToRegionsSelector()
+    }
+    
+    @objc private func saveClicked() {
+        let name = contentView.nameInputView.inputTextField.text
+        let phoneCode = contentView.codeInputView.inputTextField.text
+        interactor?.save(request: RegionAdd.Save.Request(regionFormFields: RegionAdd.RegionFormFields(name: name, phoneCode: phoneCode)))
     }
 }

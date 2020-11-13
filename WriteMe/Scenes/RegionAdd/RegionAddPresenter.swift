@@ -11,21 +11,33 @@
 //
 
 import UIKit
+import InputMask
 
 protocol RegionAddPresentationLogic
 {
-  func presentSomething(response: RegionAdd.Something.Response)
+    func setup(response: RegionAdd.Setup.Response)
+    func save(response: RegionAdd.Save.Response)
 }
 
-class RegionAddPresenter: RegionAddPresentationLogic
+class RegionAddPresenter
 {
-  weak var viewController: RegionAddDisplayLogic?
-  
-  // MARK: Do something
-  
-  func presentSomething(response: RegionAdd.Something.Response)
-  {
-    let viewModel = RegionAdd.Something.ViewModel()
-    viewController?.displaySomething(viewModel: viewModel)
-  }
+    weak var viewController: RegionAddDisplayLogic?
+    var listener = MaskedTextFieldDelegate()
+    
+    // MARK: Do something
+    
+}
+    
+    
+extension RegionAddPresenter: RegionAddPresentationLogic {
+    
+    func setup(response: RegionAdd.Setup.Response) {
+        listener.primaryMaskFormat = "+[000000000000000000000000]"
+        viewController?.contentView.codeInputView.inputTextField.delegate = listener
+    }
+    
+    func save(response: RegionAdd.Save.Response) {
+        viewController?.save(viewModel: RegionAdd.Save.ViewModel())
+    }
+    
 }

@@ -8,9 +8,9 @@
 
 import UIKit
 
-class PhoneInputInputView: UIVisualEffectView {
+class InputView: UIVisualEffectView {
     
-    lazy var phoneTextField: UITextField = {
+    lazy var inputTextField: UITextField = {
         let textField = UITextField()
         textField.placeholder = NSLocalizedString("Phone", comment: "Phone")
         textField.textAlignment = .left
@@ -32,7 +32,7 @@ class PhoneInputInputView: UIVisualEffectView {
     }
     
     private func addSubviews() {
-        [phoneTextField]
+        [inputTextField]
             .forEach {
                 contentView.addSubview($0)
                 $0.translatesAutoresizingMaskIntoConstraints = false
@@ -46,10 +46,10 @@ class PhoneInputInputView: UIVisualEffectView {
         ]
         
         let phoneTextFieldСonstraints = [
-            phoneTextField.leftAnchor.constraint(equalTo: self.leftAnchor, constant: 20.0),
-            phoneTextField.rightAnchor.constraint(equalTo: self.rightAnchor, constant: -40.0),
-            phoneTextField.topAnchor.constraint(equalTo: self.topAnchor, constant: 8),
-            phoneTextField.bottomAnchor.constraint(equalTo: self.bottomAnchor, constant: -8)
+            inputTextField.leftAnchor.constraint(equalTo: self.leftAnchor, constant: 20.0),
+            inputTextField.rightAnchor.constraint(equalTo: self.rightAnchor, constant: -40.0),
+            inputTextField.topAnchor.constraint(equalTo: self.topAnchor, constant: 8),
+            inputTextField.bottomAnchor.constraint(equalTo: self.bottomAnchor, constant: -8)
         ]
         
         [constraints, phoneTextFieldСonstraints]

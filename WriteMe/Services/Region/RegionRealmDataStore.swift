@@ -28,4 +28,10 @@ class RegionRealmDataStore: RegionStoreProtocol
         }.eraseToAnyPublisher()
     }
     
+    func saveRegion(region: Region) -> AnyPublisher<Region, Never> {
+        return Future<Region, Never> { promise in
+            promise(.success(self.regionData.save(object: region)))
+        }.eraseToAnyPublisher()
+    }
+    
 }

@@ -18,6 +18,8 @@
 "RegionSelect" = "Select region";
 "RegionUse" = "Use region";
 "RegionAdd" = "Add region";
+"RegionName" = "Name";
+"RegionPhoneCode" = "Phone code";
 
 "WAppDefaultTextSettingTitle" = "Message text";
 "WAppDefaultTextSettingFooter" = "This text is default for chat";

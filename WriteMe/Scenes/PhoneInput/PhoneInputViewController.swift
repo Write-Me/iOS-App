@@ -41,7 +41,7 @@ class PhoneInputViewController: UIViewController
     {
         let interactor = PhoneInputInteractor()
         let router = PhoneInputRouter()
-        let presenter = PhoneInputPresenter(interactor: interactor)
+        let presenter = PhoneInputPresenter()
         self.interactor = interactor
         self.router = router
         interactor.presenter = presenter
@@ -76,7 +76,7 @@ class PhoneInputViewController: UIViewController
     @objc private func toApp(_ target: SocialButton)
     {
         Animation.share.pickAndPop(view: target)
-        interactor?.toApp(PhoneInputModel.ToApp.Request(socialType: target.type, phone: contentView.phoneInputView.phoneTextField.text, sender: target))
+        interactor?.toApp(PhoneInputModel.ToApp.Request(socialType: target.type, phone: contentView.phoneInputView.inputTextField.text, sender: target))
     }
     
     @objc private func openInfo()

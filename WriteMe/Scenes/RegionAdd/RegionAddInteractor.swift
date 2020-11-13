@@ -14,28 +14,47 @@ import UIKit
 
 protocol RegionAddBusinessLogic
 {
-  func doSomething(request: RegionAdd.Something.Request)
+    func setup(request: RegionAdd.Setup.Request)
+    func save(request: RegionAdd.Save.Request)
 }
 
 protocol RegionAddDataStore
 {
-  //var name: String { get set }
+    var newRegion: Region { get set }
 }
 
-class RegionAddInteractor: RegionAddBusinessLogic, RegionAddDataStore
+class RegionAddInteractor: RegionAddDataStore
 {
-  var presenter: RegionAddPresentationLogic?
-  var worker: RegionAddWorker?
-  //var name: String = ""
-  
-  // MARK: Do something
-  
-  func doSomething(request: RegionAdd.Something.Request)
-  {
-    worker = RegionAddWorker()
-    worker?.doSomeWork()
+    var presenter: RegionAddPresentationLogic?
+    var worker: RegionAddWorker?
+    var regionRealmWorker: RegionWorker
     
-    let response = RegionAdd.Something.Response()
-    presenter?.presentSomething(response: response)
-  }
+    var newRegion: Region = Region()
+    
+    init(regionRealmWorker: RegionWorker = RegionWorker(service: RegionRealmDataStore()))
+    {
+        self.regionRealmWorker = regionRealmWorker
+    }
+    
+    private func dataToRegion(_ regionFormFields: RegionAdd.RegionFormFields) -> Region {
+        newRegion.name = regionFormFields.name ?? ""
+        newRegion.phoneCode = regionFormFields.phoneCode ?? ""
+        return newRegion
+    }
+}
+
+extension RegionAddInteractor: RegionAddBusinessLogic
+{
+
+    func setup(request: RegionAdd.Setup.Request)
+    {
+        presenter?.setup(response: RegionAdd.Setup.Response())
+    }
+    
+    func save(request: RegionAdd.Save.Request)
+    {
+        regionRealmWorker.saveRegion(region: dataToRegion(request.regionFormFields))
+        presenter?.save(response: RegionAdd.Save.Response())
+    }
+    
 }

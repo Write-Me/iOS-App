@@ -43,6 +43,7 @@
 		80BAABDB255D815C00BAAF8B /* RegionAddViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80BAABD5255D815C00BAAF8B /* RegionAddViewController.swift */; };
 		80BAABDC255D815C00BAAF8B /* RegionAddInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80BAABD6255D815C00BAAF8B /* RegionAddInteractor.swift */; };
 		80BAABE3255D81D000BAAF8B /* RegionAddView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80BAABE2255D81D000BAAF8B /* RegionAddView.swift */; };
+		80C1D2D4255E696700DB438E /* SettingsTableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80C1D2D3255E696700DB438E /* SettingsTableView.swift */; };
 		80EEA3042509F69D00592DD8 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 80EEA3032509F69D00592DD8 /* Main.storyboard */; };
 		80F16CBE250A13B6005524C6 /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80F16CBD250A13B6005524C6 /* SettingsViewController.swift */; };
 		80F16CC0250A1486005524C6 /* PhoneInputRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80F16CBF250A1486005524C6 /* PhoneInputRouter.swift */; };
@@ -70,7 +71,7 @@
 		D69BBC3524F7CB2900B74B5A /* PhoneInputInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = D69BBC3424F7CB2900B74B5A /* PhoneInputInteractor.swift */; };
 		D69BBC3724F7CB3F00B74B5A /* PhoneInputPresener.swift in Sources */ = {isa = PBXBuildFile; fileRef = D69BBC3624F7CB3E00B74B5A /* PhoneInputPresener.swift */; };
 		D69BBC3C24F7D84700B74B5A /* InputMask in Frameworks */ = {isa = PBXBuildFile; productRef = D69BBC3B24F7D84700B74B5A /* InputMask */; };
-		D69BBC3F24F7DF1700B74B5A /* PhoneInputInputView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D69BBC3E24F7DF1700B74B5A /* PhoneInputInputView.swift */; };
+		D69BBC3F24F7DF1700B74B5A /* InputView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D69BBC3E24F7DF1700B74B5A /* InputView.swift */; };
 		D69BBC4124F7DF8A00B74B5A /* SocialButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = D69BBC4024F7DF8A00B74B5A /* SocialButton.swift */; };
 		D6EEDED024FD2DA600EC169B /* Palette.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6EEDECF24FD2DA600EC169B /* Palette.swift */; };
 		D6EEDED724FFD4A400EC169B /* SocialType.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6EEDED624FFD4A400EC169B /* SocialType.swift */; };
@@ -131,6 +132,7 @@
 		80BAABD5255D815C00BAAF8B /* RegionAddViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegionAddViewController.swift; sourceTree = "<group>"; };
 		80BAABD6255D815C00BAAF8B /* RegionAddInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegionAddInteractor.swift; sourceTree = "<group>"; };
 		80BAABE2255D81D000BAAF8B /* RegionAddView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegionAddView.swift; sourceTree = "<group>"; };
+		80C1D2D3255E696700DB438E /* SettingsTableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsTableView.swift; sourceTree = "<group>"; };
 		80EEA3032509F69D00592DD8 /* Main.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
 		80F16CBD250A13B6005524C6 /* SettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
 		80F16CBF250A1486005524C6 /* PhoneInputRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhoneInputRouter.swift; sourceTree = "<group>"; };
@@ -163,7 +165,7 @@
 		D69BBC3224F7CB0100B74B5A /* PhoneInputViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhoneInputViewController.swift; sourceTree = "<group>"; };
 		D69BBC3424F7CB2900B74B5A /* PhoneInputInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhoneInputInteractor.swift; sourceTree = "<group>"; };
 		D69BBC3624F7CB3E00B74B5A /* PhoneInputPresener.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhoneInputPresener.swift; sourceTree = "<group>"; };
-		D69BBC3E24F7DF1700B74B5A /* PhoneInputInputView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhoneInputInputView.swift; sourceTree = "<group>"; };
+		D69BBC3E24F7DF1700B74B5A /* InputView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InputView.swift; sourceTree = "<group>"; };
 		D69BBC4024F7DF8A00B74B5A /* SocialButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SocialButton.swift; sourceTree = "<group>"; };
 		D6EEDECF24FD2DA600EC169B /* Palette.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Palette.swift; sourceTree = "<group>"; };
 		D6EEDED624FFD4A400EC169B /* SocialType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SocialType.swift; sourceTree = "<group>"; };
@@ -234,7 +236,7 @@
 			isa = PBXGroup;
 			children = (
 				8073CB1C251C1B2800F5BB44 /* SettingsView.swift */,
-				805076E1252702BF0008678A /* SettingsModel.swift */,
+				80C1D2D3255E696700DB438E /* SettingsTableView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -314,6 +316,7 @@
 				807C7B3725208CE000F0AB31 /* Protocol */,
 				8073CB1B251C1B1800F5BB44 /* Views */,
 				80F16CBD250A13B6005524C6 /* SettingsViewController.swift */,
+				805076E1252702BF0008678A /* SettingsModel.swift */,
 				805076CB2526F9B70008678A /* SettingsInteractor.swift */,
 				805076DC252701FA0008678A /* SettingsPresenter.swift */,
 				D677A7A02528BBA700E430A0 /* SettingsRouter.swift */,
@@ -446,7 +449,7 @@
 			isa = PBXGroup;
 			children = (
 				D69BBC3024F7CAF200B74B5A /* PhoneInputView.swift */,
-				D69BBC3E24F7DF1700B74B5A /* PhoneInputInputView.swift */,
+				D69BBC3E24F7DF1700B74B5A /* InputView.swift */,
 				D69BBC4024F7DF8A00B74B5A /* SocialButton.swift */,
 				80F16CC3250A1720005524C6 /* SettingsButton.swift */,
 			);
@@ -637,7 +640,7 @@
 				807C7B6225208E9C00F0AB31 /* Icon.swift in Sources */,
 				80F16CC0250A1486005524C6 /* PhoneInputRouter.swift in Sources */,
 				D677A7952528BB1200E430A0 /* RegionSelectorRouter.swift in Sources */,
-				D69BBC3F24F7DF1700B74B5A /* PhoneInputInputView.swift in Sources */,
+				D69BBC3F24F7DF1700B74B5A /* InputView.swift in Sources */,
 				807C7B5D25208E3C00F0AB31 /* RowCompatible.swift in Sources */,
 				D69BBC3124F7CAF200B74B5A /* PhoneInputView.swift in Sources */,
 				80F5C0B9252DC18A00A9837B /* RegionWorker.swift in Sources */,
@@ -653,6 +656,7 @@
 				805076CC2526F9B70008678A /* SettingsInteractor.swift in Sources */,
 				805617B2255C1E0D00B7F93B /* RealmDataDelegate.swift in Sources */,
 				80F5C0A5252DBC8700A9837B /* RegionView.swift in Sources */,
+				80C1D2D4255E696700DB438E /* SettingsTableView.swift in Sources */,
 				807C7B6825208F3800F0AB31 /* SwitchRow.swift in Sources */,
 				D677A7A12528BBA700E430A0 /* SettingsRouter.swift in Sources */,
 				80BAABD8255D815C00BAAF8B /* RegionAddWorker.swift in Sources */,

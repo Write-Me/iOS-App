@@ -24,8 +24,8 @@ class PhoneInputView: UIView {
         return scrollView
     }()
     
-    lazy var phoneInputView: PhoneInputInputView = {
-        let view = PhoneInputInputView(effect: UIBlurEffect(style: .systemMaterial))
+    lazy var phoneInputView: InputView = {
+        let view = InputView(effect: UIBlurEffect(style: .systemMaterial))
         return view
     }()
     
@@ -49,7 +49,8 @@ class PhoneInputView: UIView {
         return stackView
     }()
     
-    init() {
+    init()
+    {
         super.init(frame: .zero)
         backgroundColor = UIColor(named: "background")
         addSubviews()
@@ -60,7 +61,8 @@ class PhoneInputView: UIView {
         fatalError("init(coder:) has not been implemented")
     }
     
-    private func addSubviews() {
+    private func addSubviews()
+    {
         [scrollView
             ]
             .forEach {
@@ -77,7 +79,8 @@ class PhoneInputView: UIView {
         }
     }
     
-    private func setUpConstraints() {
+    private func setUpConstraints()
+    {
         
         scrollView.contentSize = CGSize(width: 0, height: 500)
         
