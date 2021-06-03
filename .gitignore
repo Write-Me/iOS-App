@@ -90,3 +90,4 @@ iOSInjectionProject/
 
 # End of https://www.toptal.com/developers/gitignore/api/swift
 /ProjectVesta.xcworkspace/xcshareddata/swiftpm/Package.resolved
+/WriteMe.xcodeproj/project.xcworkspace/xcuserdata/pets-y.xcuserdatad/UserInterfaceState.xcuserstate
