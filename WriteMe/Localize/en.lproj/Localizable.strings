@@ -8,11 +8,11 @@
 
 "EnterPhone" = "Enter phone";
 "Phone" = "Phone";
-"Settings" = "Settings";
 "AboutApp" = "About app";
 
 
 //Settings
+"settings_title" = "Settings";
 "RegionSettingTitle" = "Region";
 "RegionSettingFooter" = "Select phone code of your region";
 "RegionSelect" = "Select region";

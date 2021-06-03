@@ -27,10 +27,10 @@ class SocialButton: UIButton {
         super.init(frame: frame)
         layer.masksToBounds = false
         layer.cornerRadius = PhoneInputMainViewSettings.shared.cornerRadius
-        layer.shadowColor = UIColor.black.cgColor
-        layer.shadowOpacity = 0.2
-        layer.shadowOffset = .zero
-        layer.shadowRadius = 5
+//        layer.shadowColor = UIColor.black.cgColor
+//        layer.shadowOpacity = 0.2
+//        layer.shadowOffset = .zero
+//        layer.shadowRadius = 5
         backgroundColor = UIColor(named: "base-green")
         setTitleColor(.white, for: .normal)
         titleLabel?.font = UIFont.systemFont(ofSize: 32, weight: .regular)

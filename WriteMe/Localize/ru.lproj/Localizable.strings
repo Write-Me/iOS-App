@@ -8,10 +8,11 @@
 
 "EnterPhone" = "Введи телефон";
 "Phone" = "Телефон";
-"Settings" = "Настройки";
+
 "AboutApp" = "О приложении";
 
 //Settings
+"settings_title" = "Настройки";
 "RegionSettingTitle" = "Регион";
 "RegionSettingFooter" = "Укажите телефонный код вашего региона";
 "RegionSelect" = "Выбрать регион";

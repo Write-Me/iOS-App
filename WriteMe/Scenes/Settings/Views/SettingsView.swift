@@ -30,16 +30,14 @@ class SettingsView: UIView {
     init() {
         super.init(frame: .zero)
         addSubviews()
-        setUpConstraints()
-        
+        setupConstraints()
     }
     
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
     
-    public func setup(settings: Settings)
-    {
+    public func setup(settings: Settings) {
         sections = [
             Section(
                 title: nil,
@@ -69,8 +67,7 @@ class SettingsView: UIView {
         ]
     }
     
-    private func addSubviews()
-    {
+    private func addSubviews() {
         [tableView
         ]
         .forEach {
@@ -79,7 +76,7 @@ class SettingsView: UIView {
         }
     }
     
-    private func setUpConstraints() {
+    private func setupConstraints() {
         let tableViewConstraints = [
             tableView.leftAnchor.constraint(equalTo: leftAnchor, constant: 0.0),
             tableView.rightAnchor.constraint(equalTo: rightAnchor, constant: 0.0),
@@ -175,8 +172,7 @@ extension SettingsView: UITableViewDataSource, UITableViewDelegate {
         }
     }
     
-    public func tableView(_ tableView: UITableView, accessoryButtonTappedForRowWith indexPath: IndexPath)
-    {
+    public func tableView(_ tableView: UITableView, accessoryButtonTappedForRowWith indexPath: IndexPath) {
         switch sections[indexPath.section].rows[indexPath.row] {
         case let row as NavigationRowCompatible:
             DispatchQueue.main.async {
@@ -187,8 +183,7 @@ extension SettingsView: UITableViewDataSource, UITableViewDelegate {
         }
     }
     
-    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat
-    {
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return 44
     }
     

@@ -61,7 +61,7 @@ class SettingsViewController: UIViewController
     {
         view.backgroundColor = UIColor(named: "background")
         navigationController?.navigationBar.prefersLargeTitles = false
-        navigationItem.title = NSLocalizedString("Settings", comment: "")
+        navigationItem.title = LocalizableKey.Settings.title.localized()
     }
     
     private func loadData()

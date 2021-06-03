@@ -73,6 +73,7 @@
 		D69BBC3C24F7D84700B74B5A /* InputMask in Frameworks */ = {isa = PBXBuildFile; productRef = D69BBC3B24F7D84700B74B5A /* InputMask */; };
 		D69BBC3F24F7DF1700B74B5A /* InputView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D69BBC3E24F7DF1700B74B5A /* InputView.swift */; };
 		D69BBC4124F7DF8A00B74B5A /* SocialButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = D69BBC4024F7DF8A00B74B5A /* SocialButton.swift */; };
+		D6A4DE3E265A953C008C05D5 /* LocalizableKey.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6A4DE3D265A953C008C05D5 /* LocalizableKey.swift */; };
 		D6EEDED024FD2DA600EC169B /* Palette.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6EEDECF24FD2DA600EC169B /* Palette.swift */; };
 		D6EEDED724FFD4A400EC169B /* SocialType.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6EEDED624FFD4A400EC169B /* SocialType.swift */; };
 		D6EEDED924FFD54D00EC169B /* PhoneInputModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6EEDED824FFD54D00EC169B /* PhoneInputModel.swift */; };
@@ -98,6 +99,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		0BD9A73126690D9F008C965F /* ru */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = ru; path = ru.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		80172641253050FB002945C3 /* InputRow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InputRow.swift; sourceTree = "<group>"; };
 		8017264625305120002945C3 /* InputCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InputCell.swift; sourceTree = "<group>"; };
 		8017266925306AFF002945C3 /* Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extension.swift; sourceTree = "<group>"; };
@@ -153,7 +155,6 @@
 		D69BBBFE24F7C74800B74B5A /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		D69BBC0024F7C74800B74B5A /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
 		D69BBC0724F7C74A00B74B5A /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
-		D69BBC0A24F7C74A00B74B5A /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		D69BBC0C24F7C74A00B74B5A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		D69BBC1124F7C74A00B74B5A /* WriteMeTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = WriteMeTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		D69BBC1524F7C74A00B74B5A /* WriteMeTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WriteMeTests.swift; sourceTree = "<group>"; };
@@ -167,13 +168,13 @@
 		D69BBC3624F7CB3E00B74B5A /* PhoneInputPresener.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhoneInputPresener.swift; sourceTree = "<group>"; };
 		D69BBC3E24F7DF1700B74B5A /* InputView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InputView.swift; sourceTree = "<group>"; };
 		D69BBC4024F7DF8A00B74B5A /* SocialButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SocialButton.swift; sourceTree = "<group>"; };
+		D6A4DE3D265A953C008C05D5 /* LocalizableKey.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocalizableKey.swift; sourceTree = "<group>"; };
 		D6EEDECF24FD2DA600EC169B /* Palette.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Palette.swift; sourceTree = "<group>"; };
 		D6EEDED624FFD4A400EC169B /* SocialType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SocialType.swift; sourceTree = "<group>"; };
 		D6EEDED824FFD54D00EC169B /* PhoneInputModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhoneInputModel.swift; sourceTree = "<group>"; };
 		D6EEDEDA2500F91E00EC169B /* Animation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Animation.swift; sourceTree = "<group>"; };
 		D6EEDEDC2501186E00EC169B /* ru */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ru; path = ru.lproj/LaunchScreen.strings; sourceTree = "<group>"; };
 		D6EEDEE02501190D00EC169B /* ru */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ru; path = ru.lproj/Localizable.strings; sourceTree = "<group>"; };
-		D6EEDEE32501194300EC169B /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -387,10 +388,10 @@
 		D69BBBFD24F7C74800B74B5A /* WriteMe */ = {
 			isa = PBXGroup;
 			children = (
+				D6A4DE3C265A951B008C05D5 /* Localize */,
 				805076D62526FCE80008678A /* Services */,
-				805076D02526FBFA0008678A /* Workers */,
-				D6EEDED524FFD49000EC169B /* Model */,
-				D6EEDECE24FD2D8E00EC169B /* Common */,
+				D6A4DE3B265A94B7008C05D5 /* Resources */,
+				D6EEDECE24FD2D8E00EC169B /* Core */,
 				D69BBC2F24F7CAAD00B74B5A /* Scenes */,
 				D69BBBFE24F7C74800B74B5A /* AppDelegate.swift */,
 				D69BBC0024F7C74800B74B5A /* SceneDelegate.swift */,
@@ -398,7 +399,6 @@
 				80EEA3032509F69D00592DD8 /* Main.storyboard */,
 				D69BBC0924F7C74A00B74B5A /* LaunchScreen.storyboard */,
 				D69BBC0C24F7C74A00B74B5A /* Info.plist */,
-				D6EEDEE12501190D00EC169B /* Localizable.strings */,
 			);
 			path = WriteMe;
 			sourceTree = "<group>";
@@ -456,15 +456,33 @@
 			path = View;
 			sourceTree = "<group>";
 		};
-		D6EEDECE24FD2D8E00EC169B /* Common */ = {
+		D6A4DE3B265A94B7008C05D5 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+			);
+			path = Resources;
+			sourceTree = "<group>";
+		};
+		D6A4DE3C265A951B008C05D5 /* Localize */ = {
+			isa = PBXGroup;
+			children = (
+				D6EEDEE12501190D00EC169B /* Localizable.strings */,
+				D6A4DE3D265A953C008C05D5 /* LocalizableKey.swift */,
+			);
+			path = Localize;
+			sourceTree = "<group>";
+		};
+		D6EEDECE24FD2D8E00EC169B /* Core */ = {
+			isa = PBXGroup;
+			children = (
+				D6EEDED524FFD49000EC169B /* Model */,
+				805076D02526FBFA0008678A /* Workers */,
 				D6EEDECF24FD2DA600EC169B /* Palette.swift */,
 				D6EEDEDA2500F91E00EC169B /* Animation.swift */,
 				8017266925306AFF002945C3 /* Extension.swift */,
 				80F5C0B1252DBF9700A9837B /* regions.json */,
 			);
-			path = Common;
+			path = Core;
 			sourceTree = "<group>";
 		};
 		D6EEDED124FD36FB00EC169B /* Frameworks */ = {
@@ -570,11 +588,9 @@
 			};
 			buildConfigurationList = D69BBBF624F7C74800B74B5A /* Build configuration list for PBXProject "WriteMe" */;
 			compatibilityVersion = "Xcode 9.3";
-			developmentRegion = en;
+			developmentRegion = ru;
 			hasScannedForEncodings = 0;
 			knownRegions = (
-				en,
-				Base,
 				ru,
 			);
 			mainGroup = D69BBBF224F7C74800B74B5A;
@@ -687,6 +703,7 @@
 				D6EEDEDB2500F91E00EC169B /* Animation.swift in Sources */,
 				807C7B3325208C8F00F0AB31 /* SwitchCell.swift in Sources */,
 				80BAABD7255D815C00BAAF8B /* RegionAddPresenter.swift in Sources */,
+				D6A4DE3E265A953C008C05D5 /* LocalizableKey.swift in Sources */,
 				D69BBC3524F7CB2900B74B5A /* PhoneInputInteractor.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -726,8 +743,8 @@
 		D69BBC0924F7C74A00B74B5A /* LaunchScreen.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
-				D69BBC0A24F7C74A00B74B5A /* Base */,
 				D6EEDEDC2501186E00EC169B /* ru */,
+				0BD9A73126690D9F008C965F /* ru */,
 			);
 			name = LaunchScreen.storyboard;
 			sourceTree = "<group>";
@@ -736,7 +753,6 @@
 			isa = PBXVariantGroup;
 			children = (
 				D6EEDEE02501190D00EC169B /* ru */,
-				D6EEDEE32501194300EC169B /* en */,
 			);
 			name = Localizable.strings;
 			sourceTree = "<group>";
@@ -804,6 +820,7 @@
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_SUPPRESS_WARNINGS = YES;
+				SWIFT_VERSION = 5.0;
 			};
 			name = Debug;
 		};
@@ -860,6 +877,7 @@
 				SWIFT_COMPILATION_MODE = wholemodule;
 				SWIFT_OPTIMIZATION_LEVEL = "-O";
 				SWIFT_SUPPRESS_WARNINGS = YES;
+				SWIFT_VERSION = 5.0;
 				VALIDATE_PRODUCT = YES;
 			};
 			name = Release;
@@ -869,13 +887,16 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 4;
 				DEVELOPMENT_TEAM = 3PR45WW6CK;
 				INFOPLIST_FILE = WriteMe/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.6;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = swiftment.work.WriteMe;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = swiftment.work.writeme;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = 1;
@@ -887,13 +908,16 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 4;
 				DEVELOPMENT_TEAM = 3PR45WW6CK;
 				INFOPLIST_FILE = WriteMe/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.6;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = swiftment.work.WriteMe;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = swiftment.work.writeme;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = 1;
@@ -1031,7 +1055,7 @@
 			repositoryURL = "https://github.com/realm/realm-cocoa.git";
 			requirement = {
 				kind = upToNextMajorVersion;
-				minimumVersion = 10.1.2;
+				minimumVersion = 10.5.2;
 			};
 		};
 		D69BBC3A24F7D84700B74B5A /* XCRemoteSwiftPackageReference "input-mask-ios" */ = {

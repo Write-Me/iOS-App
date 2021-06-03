@@ -1,0 +1,8 @@
+app_identifier("swiftment.work.writeme") # The bundle identifier of your app
+apple_id("swiftment.work@gmail.com") # Your Apple email address
+
+itc_team_id("119823588") # App Store Connect Team ID
+team_id("3PR45WW6CK") # Developer Portal Team ID
+
+# For more information about the Appfile, see:
+#     https://docs.fastlane.tools/advanced/#appfile
