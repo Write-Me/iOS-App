@@ -1,0 +1,55 @@
+//
+//  {{ module_info.file_name }}
+//  {{ module_info.project_name }}
+//
+//  Created by {{ developer.name }} on {{ date }}.
+//  Copyright © {{ year }} {{ developer.company }}. All rights reserved.
+//
+
+import Foundation
+
+struct {{ module_info.name }}ViewModel {
+    let text: String
+
+    init(_ model: {{ module_info.name }}Model) {
+        self.text = model.content.text
+    }
+}
+
+struct {{ module_info.name }}Model {
+    var content: Content
+
+    struct Content {
+        var text: String
+
+        init(_ content: {{ module_info.name }}ResponseModel.Response) {
+            self.text = content.text
+        }
+
+        mutating func logic() {
+            self.text = text + " " + "bussiness logic"
+        }
+    }
+
+    init(_ content: {{ module_info.name }}Model.Content) {
+        self.content = content
+    }
+}
+
+struct {{ module_info.name }}ParametersModel: BackendRequest {
+    var parameter: Int
+
+    init(parameter: Int) {
+        self.parameter = parameter
+    }
+}
+
+struct {{ module_info.name }}ResponseModel: BackendResponse {
+    var isSuccess: Bool
+    var error: BackendAPIError?
+    let value: Response?
+
+    struct Response: Decodable {
+        let text: String
+    }
+}

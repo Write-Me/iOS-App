@@ -1,0 +1,8 @@
+{
+    "value": {},
+    "isSuccess": false,
+    "error": {
+        "type": "string",
+        "message": "reason error mock"
+    }
+}

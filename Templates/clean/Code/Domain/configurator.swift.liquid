@@ -1,0 +1,31 @@
+//
+//  {{ module_info.file_name }}
+//  {{ module_info.project_name }}
+//
+//  Created by {{ developer.name }} on {{ date }}.
+//  Copyright © {{ year }} {{ developer.company }}. All rights reserved.
+//
+
+import Foundation
+import RouteComposer
+
+class {{ module_info.name }}Factory: Factory {
+
+    func build(with context: Context) throws -> {{ module_info.name }}ViewController {
+        #if MOCK
+        let dataService = {{ module_info.name }}MockServices(.success)
+        #else
+        let dataService = {{ module_info.name }}NetworkServices()
+        #endif
+        let repository = {{ module_info.name }}Repository(dataSource: dataService)
+        let interactor = {{ module_info.name }}Interactor(dataSource: repository)
+        let presenter = {{ module_info.name }}Presenter(dataSource: interactor)
+        return {{ module_info.name }}ViewController(dataSource: presenter)
+    }
+
+    typealias ViewController = {{ module_info.name }}ViewController
+    typealias Context = {{ module_info.name }}Context
+    struct {{ module_info.name }}Context {
+    }
+
+}

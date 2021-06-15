@@ -1,0 +1,34 @@
+//
+//  {{ module_info.file_name }}
+//  {{ module_info.project_name }}
+//
+//  Created by {{ developer.name }} on {{ date }}.
+//  Copyright © {{ year }} {{ developer.company }}. All rights reserved.
+//
+
+import Foundation
+
+class {{ module_info.name }}Presenter {
+
+    private weak var viewer: {{ module_info.name }}ViewViewer?
+    private var dataSource: {{ module_info.name }}InteractorDataSource!
+
+    init(dataSource interactor: {{ module_info.name }}InteractorDataSource?) {
+        self.dataSource = interactor
+    }
+
+    deinit {
+        print("deinit presenter")
+    }
+
+}
+
+extension {{ module_info.name }}Presenter: {{ module_info.name }}PresenterDataSource {
+    func setup(objectFor view: {{ module_info.name }}ViewViewer) {
+        self.viewer = view
+        self.dataSource?.setup(objectFor: self)
+    }
+}
+
+extension {{ module_info.name }}Presenter: {{ module_info.name }}PresenterViewer {
+}

@@ -1,0 +1,21 @@
+### Headers settings
+company: WriteMe
+
+### Xcode project settings
+project_name: WriteMe
+xcodeproj_path: WriteMe.xcodeproj
+
+### Code generation settings section
+# The main project target name
+project_target: WriteMe
+
+# The file path for new modules
+project_file_path: WriteMe/Modules
+
+# The Xcode group path to new modules
+project_group_path: WriteMe/Modules
+
+### Templates
+templates:
+- {name: original_clean_architecture}
+- {name: clean}

@@ -1,0 +1,29 @@
+# Template information section
+name: "clean_architecture"
+summary: "Clean architecture for app WriteMe"
+author: "BooNoo"
+version: "0.0.1"
+license: "MIT"
+
+# The declarations for code files
+
+code_files:
+# Presentation layer
+- {name: Presentation/Presenter.swift, path: Code/Presentation/presenter.swift.liquid}
+- {name: Presentation/ViewController.swift,  path: Code/Presentation/view.swift.liquid}
+
+# Domain layer
+- {name: Domain/Entities/Models.swift, path: Code/Domain/Entities/models.swift.liquid}
+- {name: Domain/Entities/Protocols.swift, path: Code/Domain/Entities/protocols.swift.liquid}
+- {name: Domain/Entities/UseCases.swift, path: Code/Domain/Entities/usecases.swift.liquid}
+- {name: Domain/Factory.swift, path: Code/Domain/configurator.swift.liquid}
+- {name: Domain/Interactor.swift, path: Code/Domain/interactor.swift.liquid}
+
+# Data layer
+- {name: Data/Mock/Success.json, path: Code/Data/Mock/success.json.liquid}
+- {name: Data/Mock/Empty.json, path: Code/Data/Mock/empty.json.liquid}
+- {name: Data/Mock/Error.json, path: Code/Data/Mock/error.json.liquid}
+- {name: Data/Repository.swift, path: Code/Data/repository.swift.liquid}
+- {name: Data/NetworkServices.swift, path: Code/Data/network_services.swift.liquid}
+- {name: Data/MockServices.swift, path: Code/Data/mock_services.swift.liquid}
+

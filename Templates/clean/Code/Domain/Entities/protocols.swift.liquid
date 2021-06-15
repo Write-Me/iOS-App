@@ -1,0 +1,56 @@
+//
+//  {{ module_info.file_name }}
+//  {{ module_info.project_name }}
+//
+//  Created by {{ developer.name }} on {{ date }}.
+//  Copyright © {{ year }} {{ developer.company }}. All rights reserved.
+//
+
+import Foundation
+
+protocol {{ module_info.name }}ViewViewer: AnyObject {
+}
+
+protocol {{ module_info.name }}PresenterDataSource: AnyObject {
+    func setup(objectFor view: {{ module_info.name }}ViewViewer)
+}
+
+protocol {{ module_info.name }}PresenterViewer: AnyObject {
+}
+
+protocol {{ module_info.name }}InteractorDataSource: AnyObject {
+    func setup(objectFor presenter: {{ module_info.name }}PresenterViewer)
+}
+
+protocol {{ module_info.name }}InteractorViewer: AnyObject {
+}
+
+protocol {{ module_info.name }}RepositoryDataSource: AnyObject {
+}
+
+protocol {{ module_info.name }}ServicesDataSource: AnyObject {
+}
+
+// MARK: Перечесления
+/// Перечисление моковых json
+/// - success: Положительный ответ
+/// - empty: Список пуст
+/// - error: Пришла ошибка
+enum {{ module_info.name }}JsonMockType {
+    case firstServiceName(StatusType)
+
+    enum StatusType: String {
+        case success = "Success"
+        case empty = "Empty"
+        case error = "Error"
+    }
+
+    /// Метод для получения названия json файла
+    ///
+    /// - Returns: Название ввиде текста
+    func getNameFile() -> String {
+        switch self {
+        case .firstServiceName(let status): return "{{ module_info.name }}" + status.rawValue
+        }
+    }
+}
