@@ -8,7 +8,7 @@
 
 import Foundation
 
-enum SettingsModel {
+enum SettingsOLDModel {
     
     enum ApplySettings {
         

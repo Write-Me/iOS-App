@@ -8,10 +8,10 @@
 
 import UIKit
 
-class SettingsView: UIView {
+class SettingsOLDView: UIView {
     
     private let cellID = "cellID"
-    public var delegate: SettingsViewController?
+    public var delegate: SettingsOLDViewController?
     private var sections: [Section] = [] {
         didSet {
             tableView.reloadData()
@@ -48,7 +48,7 @@ class SettingsView: UIView {
                                       }),
                         SwitchRow(text: NSLocalizedString("RegionUse", comment: ""), switchValue: settings.isRegionOn,
                                   icon: .named("region"), action: { _ in
-                                    self.delegate?.interactor?.switchIsRegionOn(SettingsModel.ToggleIsRegionOn.Request())
+                                    self.delegate?.interactor?.switchIsRegionOn(SettingsOLDModel.ToggleIsRegionOn.Request())
                                   }),
                     ],
                 footer: nil
@@ -59,12 +59,16 @@ class SettingsView: UIView {
                         InputRow(placeholder: NSLocalizedString("WAppDefaultTextSettingPlaceholder", comment: ""), inputValue: settings.defaultText, icon: .named("chat"), action: nil),
                         SwitchRow(text: NSLocalizedString("WAppDefaultTextSettingEnable", comment: ""), switchValue: settings.isDefaultTextOn,
                                   icon: .named("power"), action: { _ in
-                                    self.delegate?.interactor?.toggleIsDefaultTextOn(SettingsModel.ToggleIsDefaultTextOn.Request())
+                                    self.delegate?.interactor?.toggleIsDefaultTextOn(SettingsOLDModel.ToggleIsDefaultTextOn.Request())
                                   }),
                     ],
                 footer: NSLocalizedString("WAppDefaultTextSettingFooter", comment: "")
             )
         ]
+    }
+    
+    public func setupSections(sections: [Section]) {
+        self.sections = sections
     }
     
     private func addSubviews() {
@@ -90,7 +94,7 @@ class SettingsView: UIView {
     
 }
 
-extension SettingsView: UITableViewDataSource, UITableViewDelegate {
+extension SettingsOLDView: UITableViewDataSource, UITableViewDelegate {
     
     func numberOfSections(in tableView: UITableView) -> Int
     {
@@ -189,7 +193,7 @@ extension SettingsView: UITableViewDataSource, UITableViewDelegate {
     
 }
 
-extension SettingsView: SwitchCellDelegate {
+extension SettingsOLDView: SwitchCellDelegate {
     
     // MARK: - SwitchCellDelegate
     open func switchCell(_ cell: SwitchCell, didToggleSwitch isOn: Bool) {
@@ -204,8 +208,8 @@ extension SettingsView: SwitchCellDelegate {
     
 }
 
-extension SettingsView: InputCellDelegate {
+extension SettingsOLDView: InputCellDelegate {
     func inputCell(_ cell: InputCell, inputValue: String?) {
-        delegate?.interactor?.setDefaultText(SettingsModel.SetDefaultText.Request(value: inputValue))
+        delegate?.interactor?.setDefaultText(SettingsOLDModel.SetDefaultText.Request(value: inputValue))
     }
 }

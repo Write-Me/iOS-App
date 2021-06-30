@@ -24,7 +24,7 @@ class PhoneInputRouter {
 extension PhoneInputRouter: PhoneInputRoutingLogic {
     func routeToSettings() {
         let nc = UINavigationController()
-        let vc = SettingsViewController()
+        let vc = SettingsOLDViewController()
         vc.phoneInputViewController = viewController
         nc.viewControllers = [vc]
         nc.presentationController?.delegate = viewController

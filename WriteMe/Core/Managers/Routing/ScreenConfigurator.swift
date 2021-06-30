@@ -21,48 +21,54 @@ extension ScreenConfigurator {
             factory: MainFactory()
         )
         .using(BaseNavigationController.push())
-        .from(DefaultConfigurator.baseNavigationController(context: MainFactory.Context.self, options: .allVisible, presentationStyle: .fullScreen))
+        .from(DefaultConfigurator.buildBaseNavigationController(context: MainFactory.Context.self, options: .allVisible, presentationStyle: .fullScreen))
         .assemble()
     }
     
-    var test: DestinationStep<SettingsNewViewController, SettingsNewFactory.Context> {
-        return StepAssembly(
-            finder: ClassFinder<SettingsNewViewController, SettingsNewFactory.Context>(options: .current, startingPoint: .root),
-            factory: SettingsNewFactory()
-        )
-        .using(GeneralAction.replaceRoot())
-        .from(GeneralStep.root())
-        .assemble()
+    var settings: DestinationStep<SettingsViewController, SettingsFactory.Context> {
+        return DefaultConfigurator.buildOnNavigationController(with: SettingsFactory(), options: .contained)
     }
-    
-    
     
 }
 
 struct DefaultConfigurator: ScreenConfigurator {
-
-    static func baseNavigationController<T>(context: T.Type, options: SearchOptions, presentationStyle: UIModalPresentationStyle?) -> DestinationStep<BaseNavigationController, T> {
-            return SwitchAssembly<BaseNavigationController, T>()
-                .addCase(expecting: ClassFinder<BaseNavigationController, T>(options: options))
-                .assemble(default: {
-                    return  ChainAssembly
-                            .from(
-                                SingleContainerStep(
-                                    finder: NilFinder(),
-                                    factory: NavigationControllerFactory<BaseNavigationController, T>()
-                                )
-                            )
-                            .using(
-                                GeneralAction.presentModally(
-                                    presentationStyle: presentationStyle,
-                                    isModalInPresentation: false)
-                            )
-                            .from(GeneralStep.current())
-                            .assemble()
-                })
-        }
+    
+    /// Использовать, когда хотим положить VC поверх VestaNavigationController
+    static func buildOnNavigationController<F: Factory>(with factory: F, options: SearchOptions = .allVisible) -> DestinationStep<F.ViewController, F.Context> {
+        return StepAssembly(
+            finder: ClassFinder<F.ViewController, F.Context>(options: .current, startingPoint: .root),
+            factory: factory
+        )
+        .using(BaseNavigationController.push())
+        .from(buildBaseNavigationController(context: F.Context.self, options: options))
+        .assemble()
+    }
+    
+    /// Использовать, когда хотим построить VestaNavigationController с context
+    static func buildBaseNavigationController<С>(context: С.Type,
+                                                  options: SearchOptions = .allVisible,
+                                                  presentationStyle: UIModalPresentationStyle? = .pageSheet) -> DestinationStep<BaseNavigationController, С> {
+        return SwitchAssembly<BaseNavigationController, С>()
+            .addCase(expecting: ClassFinder<BaseNavigationController, С>(options: options))
+            .assemble(default: {
+                return  ChainAssembly
+                    .from(
+                        SingleContainerStep(
+                            finder: NilFinder(),
+                            factory: NavigationControllerFactory<BaseNavigationController, С>()
+                        )
+                    )
+                    .using(
+                        GeneralAction.presentModally(
+                            presentationStyle: presentationStyle,
+                            isModalInPresentation: false)
+                    )
+                    .from(GeneralStep.current())
+                    .assemble()
+            })
+    }
 }
 
 class ConfiguratorHolder {
-     static var configuration: ScreenConfigurator = DefaultConfigurator()
+    static var configuration: ScreenConfigurator = DefaultConfigurator()
 }

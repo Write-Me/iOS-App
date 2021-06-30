@@ -61,7 +61,7 @@ class RegionSelectorRouter: NSObject, RegionSelectorRoutingLogic, RegionSelector
     // MARK: Passing data
     private func passDataToSettings(source: RegionSelectorViewController)
     {
-        source.settingsViewController?.interactor?.loadSettings(SettingsModel.ApplySettings.Request())
+        source.settingsViewController?.interactor?.loadSettings(SettingsOLDModel.ApplySettings.Request())
     }
     
     private func passDataToRegionAdd(source: RegionSelectorViewController, destination: RegionAddViewController)

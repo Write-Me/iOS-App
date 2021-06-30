@@ -9,47 +9,22 @@
 import Foundation
 
 struct MainViewModel {
-    let text: String
+    var inputMask: String?
+    var needApplyMask: Bool = false
 
     init(_ model: MainModel) {
-        self.text = model.content.text
+        self.inputMask = model.inputMask
+        self.needApplyMask = model.needApplyMask
+    }
+    
+    init(_ model: Settings) {
+        self.needApplyMask = model.isRegionOn
+        let regionPhoneCode = model.region?.phoneCode ?? "+7"
+        self.inputMask = "\(regionPhoneCode)[000000000000000000000000]"
     }
 }
 
 struct MainModel {
-    var content: Content
-
-    struct Content {
-        var text: String
-
-        init(_ content: MainResponseModel.Response) {
-            self.text = content.text
-        }
-
-        mutating func logic() {
-            self.text = text + " " + "bussiness logic"
-        }
-    }
-
-    init(_ content: MainModel.Content) {
-        self.content = content
-    }
-}
-
-struct MainParametersModel: BackendRequest {
-    var parameter: Int
-
-    init(parameter: Int) {
-        self.parameter = parameter
-    }
-}
-
-struct MainResponseModel: BackendResponse {
-    var isSuccess: Bool
-    var error: BackendAPIError?
-    let value: Response?
-
-    struct Response: Decodable {
-        let text: String
-    }
+    var inputMask: String?
+    var needApplyMask: Bool
 }

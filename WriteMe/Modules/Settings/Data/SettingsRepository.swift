@@ -8,11 +8,11 @@
 
 import UIKit
 
-class SettingsNewRepository {
+class SettingsRepository {
 
-    private var dataSource: SettingsNewServicesDataSource!
+    private var dataSource: SettingsServicesDataSource!
 
-    init(dataSource services: SettingsNewServicesDataSource?) {
+    init(dataSource services: SettingsServicesDataSource?) {
         self.dataSource = services
     }
 
@@ -22,5 +22,5 @@ class SettingsNewRepository {
 
 }
 
-extension SettingsNewRepository: SettingsNewRepositoryDataSource {
+extension SettingsRepository: SettingsRepositoryDataSource {
 }

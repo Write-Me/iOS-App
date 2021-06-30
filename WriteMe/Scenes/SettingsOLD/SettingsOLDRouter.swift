@@ -8,21 +8,21 @@
 
 import UIKit
 
-@objc protocol SettingsRoutingLogic
+@objc protocol SettingsOLDRoutingLogic
 {
     func routeToRegionSelector()    
 }
 
-class SettingsRouter: NSObject, SettingsRoutingLogic {
+class SettingsOLDRouter: NSObject, SettingsOLDRoutingLogic {
     
-    weak var viewController: SettingsViewController?
+    weak var viewController: SettingsOLDViewController?
     
     func routeToRegionSelector() {
         let vc = RegionSelectorViewController()
         navigateToRegionSelector(source: viewController, destination: vc)
     }
     
-    private func navigateToRegionSelector(source: SettingsViewController?, destination: RegionSelectorViewController) {
+    private func navigateToRegionSelector(source: SettingsOLDViewController?, destination: RegionSelectorViewController) {
         destination.settingsViewController = source
         source?.navigationController?.pushViewController(destination, animated: true)
     }

@@ -6,5 +6,5 @@
 //  Copyright © 2021 WriteMe. All rights reserved.
 //
 
-class SettingsNewMockServices: SettingsNewServicesDataSource {
+class SettingsMockServices: SettingsServicesDataSource {
 }

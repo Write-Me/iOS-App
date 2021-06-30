@@ -23,7 +23,7 @@ class RegionSelectorViewController: UIViewController, RegionSelectorDisplayLogic
     internal lazy var contentView = RegionView()
     var interactor: RegionSelectorBusinessLogic?
     var router: (NSObjectProtocol & RegionSelectorRoutingLogic & RegionSelectorDataPassing)?
-    var settingsViewController: SettingsViewController?
+    var settingsViewController: SettingsOLDViewController?
     
     // MARK: Object lifecycle
     

@@ -8,27 +8,28 @@
 
 import Foundation
 
-protocol SettingsNewViewViewer: AnyObject {
+protocol SettingsViewViewer: AnyObject {
+    func showSections(model: [[SettingsViewModel]])
 }
 
-protocol SettingsNewPresenterDataSource: AnyObject {
-    func setup(objectFor view: SettingsNewViewViewer)
+protocol SettingsPresenterDataSource: AnyObject {
+    func setup(objectFor view: SettingsViewViewer)
 }
 
-protocol SettingsNewPresenterViewer: AnyObject {
+protocol SettingsPresenterViewer: AnyObject {
 }
 
-protocol SettingsNewInteractorDataSource: AnyObject {
-    func setup(objectFor presenter: SettingsNewPresenterViewer)
+protocol SettingsInteractorDataSource: AnyObject {
+    func setup(objectFor presenter: SettingsPresenterViewer)
 }
 
-protocol SettingsNewInteractorViewer: AnyObject {
+protocol SettingsInteractorViewer: AnyObject {
 }
 
-protocol SettingsNewRepositoryDataSource: AnyObject {
+protocol SettingsRepositoryDataSource: AnyObject {
 }
 
-protocol SettingsNewServicesDataSource: AnyObject {
+protocol SettingsServicesDataSource: AnyObject {
 }
 
 // MARK: Перечесления

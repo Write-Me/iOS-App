@@ -10,10 +10,10 @@ import UIKit
 
 class SettingsNewInteractor {
 
-    private weak var viewer: SettingsNewPresenterViewer?
-    private var dataSource: SettingsNewRepositoryDataSource!
+    private weak var viewer: SettingsPresenterViewer?
+    private var dataSource: SettingsRepositoryDataSource!
 
-    init(dataSource repository: SettingsNewRepositoryDataSource?) {
+    init(dataSource repository: SettingsRepositoryDataSource?) {
         self.dataSource = repository
     }
 
@@ -23,8 +23,8 @@ class SettingsNewInteractor {
 
 }
 
-extension SettingsNewInteractor: SettingsNewInteractorDataSource {
-    func setup(objectFor presenter: SettingsNewPresenterViewer) {
+extension SettingsNewInteractor: SettingsInteractorDataSource {
+    func setup(objectFor presenter: SettingsPresenterViewer) {
         self.viewer = presenter
     }
 }

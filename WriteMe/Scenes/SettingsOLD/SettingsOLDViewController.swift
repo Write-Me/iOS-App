@@ -8,22 +8,22 @@
 
 import UIKit
 
-protocol SettingsViewControllerProtocol: class
+protocol SettingsOLDViewControllerProtocol: class
 {
-    var contentView: SettingsView { get }
-    func loadSettings(_ viewModel: SettingsModel.ApplySettings.ViewModel)
+    var contentView: SettingsOLDView { get }
+    func loadSettings(_ viewModel: SettingsOLDModel.ApplySettings.ViewModel)
 }
 
-class SettingsViewController: UIViewController
+class SettingsOLDViewController: UIViewController
 {
     
-    internal lazy var contentView: SettingsView = {
-        let view = SettingsView()
+    internal lazy var contentView: SettingsOLDView = {
+        let view = SettingsOLDView()
         view.delegate = self
         return view
     }()
-    public var interactor: SettingsBusinessLogic?
-    var router: (NSObjectProtocol & SettingsRoutingLogic)?
+    public var interactor: SettingsOLDBusinessLogic?
+    var router: (NSObjectProtocol & SettingsOLDRoutingLogic)?
     public var phoneInputViewController: PhoneInputViewController?
     
     override func loadView()
@@ -46,9 +46,9 @@ class SettingsViewController: UIViewController
     private func setup()
     {
         let viewController = self
-        let interactor = SettingsInteractor()
-        let router = SettingsRouter()
-        let presenter = SettingsPresenter(interactor: interactor)
+        let interactor = SettingsOLDInteractor()
+        let router = SettingsOLDRouter()
+        let presenter = SettingsOLDPresenter(interactor: interactor)
         self.interactor = interactor
         interactor.presenter = presenter
         presenter.viewController = viewController
@@ -66,13 +66,13 @@ class SettingsViewController: UIViewController
     
     private func loadData()
     {
-        interactor?.loadSettings(SettingsModel.ApplySettings.Request())
+        interactor?.loadSettings(SettingsOLDModel.ApplySettings.Request())
     }
 }
 
-extension SettingsViewController: SettingsViewControllerProtocol
+extension SettingsOLDViewController: SettingsOLDViewControllerProtocol
 {
-    func loadSettings(_ viewModel: SettingsModel.ApplySettings.ViewModel) {
+    func loadSettings(_ viewModel: SettingsOLDModel.ApplySettings.ViewModel) {
         contentView.setup(settings: viewModel.settings)
     }
     

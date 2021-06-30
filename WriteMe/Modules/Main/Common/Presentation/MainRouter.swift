@@ -9,7 +9,8 @@
 import UIKit
 
 enum MainRouter {
-    case main(context:MainFactory.Context)
+    case main(context: MainFactory.Context)
+    case settings(context: SettingsFactory.Context)
 }
 
 extension MainRouter {
@@ -17,6 +18,9 @@ extension MainRouter {
         switch self {
         case .main(let context):
             try? UIViewController.defRouter.navigate(to: ConfiguratorHolder.configuration.main,
+                                                  with: context, animated: true, completion: nil)
+        case .settings(let context):
+            try? UIViewController.defRouter.navigate(to: ConfiguratorHolder.configuration.settings,
                                                   with: context, animated: true, completion: nil)
         }
     }

@@ -9,10 +9,15 @@
 import Foundation
 
 protocol MainViewViewer: AnyObject {
+    func errorPhoneInput()
+    func fill(with viewModel: MainViewModel)
+    func openUrl(_ url: URL)
 }
 
 protocol MainPresenterDataSource: AnyObject {
     func setup(objectFor view: MainViewViewer)
+    func phoneEntered(_ value: String?, type: SocialType)
+    func openSettings()
 }
 
 protocol MainPresenterViewer: AnyObject {
