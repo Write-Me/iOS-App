@@ -14,6 +14,9 @@ protocol SettingsViewViewer: AnyObject {
 
 protocol SettingsPresenterDataSource: AnyObject {
     func setup(objectFor view: SettingsViewViewer)
+    func regionSwitch(_ isOn: Bool)
+    func defaultValue(_ value: String?)
+    func defaultSwitch(_ isOn: Bool)
 }
 
 protocol SettingsPresenterViewer: AnyObject {

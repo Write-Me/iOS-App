@@ -1,17 +1,16 @@
 //
-//  CellWithSwitch.swift
+//  CellWithNavigation.swift
 //  WriteMe
 //
-//  Created by Pets-y on 29.06.2021.
+//  Created by Pets-y on 01.07.2021.
 //  Copyright © 2021 Vladimir Mikhaylov. All rights reserved.
 //
 
 import UIKit
-import SnapKit
 
-class CellWithSwitch: UITableViewCell {
+class CellWithNavigation: UITableViewCell {
 
-    var switchClicked: ((_ isOn: Bool) -> ())?
+    var cellClicked: (() -> ())?
     
     private lazy var image: UIImageView = {
         $0.contentMode = .scaleAspectFit
@@ -25,15 +24,14 @@ class CellWithSwitch: UITableViewCell {
         return $0
     }(Label(font: Fonts.m))
 
-    private lazy var switcher: UISwitch = {
-        return $0
-    }(UISwitch())
     
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
         setupViews()
         setupConstraints()
-        switcher.addTarget(self, action: #selector(switchClicked(_:)), for: .touchUpInside)
+        let tap = UITapGestureRecognizer(target: self, action: #selector(isCellClicked))
+        addGestureRecognizer(tap)
+        accessoryType = .disclosureIndicator
     }
 
     required init?(coder: NSCoder) {
@@ -43,8 +41,7 @@ class CellWithSwitch: UITableViewCell {
     private func setupViews() {
         contentView.addSubviews(
             image,
-            title,
-            switcher)
+            title)
     }
 
     private func setupConstraints() {
@@ -60,21 +57,16 @@ class CellWithSwitch: UITableViewCell {
             $0.left.equalTo(image.snp.right).offset(10)
         }
 
-        switcher.snp.makeConstraints {
-            $0.right.equalToSuperview().inset(20)
-            $0.centerY.equalToSuperview()
+    }
+
+    @objc private func isCellClicked() {
+        if let action = self.cellClicked {
+            action()
         }
     }
 
-    @objc private func switchClicked(_ switcher: UISwitch) {
-        if let action = self.switchClicked {
-            action(switcher.isOn)
-        }
-    }
-
-    public func setup(_ model: CellWithSwitchProtocol) {
+    public func setup(_ model: CellWithNavigationModel) {
         image.image = model.image.image
         title.text = model.title
-        switcher.isOn = model.isOn
     }
 }

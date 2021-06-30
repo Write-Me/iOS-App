@@ -8,6 +8,9 @@
 
 /* Begin PBXBuildFile section */
 		0B2F8A2B2678F1DC003FC6F4 /* BaseNavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B2F8A2A2678F1DC003FC6F4 /* BaseNavigationController.swift */; };
+		0B6BA6B7268CC3B40004BC11 /* CellWithNavigation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B6BA6B6268CC3B40004BC11 /* CellWithNavigation.swift */; };
+		0B6BA6BA268CC9A10004BC11 /* ImageKey.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B6BA6B9268CC9A10004BC11 /* ImageKey.swift */; };
+		0B6BA6BC268CCC290004BC11 /* CellWithInput.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B6BA6BB268CCC290004BC11 /* CellWithInput.swift */; };
 		0B776C35268B5AD200A6845C /* CellWithSwitch.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B776C34268B5AD200A6845C /* CellWithSwitch.swift */; };
 		0B776C39268B5B2A00A6845C /* Label.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B776C38268B5B2A00A6845C /* Label.swift */; };
 		0B776C3C268B5B6C00A6845C /* Fonts.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B776C3B268B5B6C00A6845C /* Fonts.swift */; };
@@ -148,6 +151,9 @@
 		041BDC3C52D895DDDFF0F8F3 /* testError.json */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.json; path = testError.json; sourceTree = "<group>"; };
 		09A749EEBC305B4969EFBCCA /* MainRepository.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = MainRepository.swift; sourceTree = "<group>"; };
 		0B2F8A2A2678F1DC003FC6F4 /* BaseNavigationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseNavigationController.swift; sourceTree = "<group>"; };
+		0B6BA6B6268CC3B40004BC11 /* CellWithNavigation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CellWithNavigation.swift; sourceTree = "<group>"; };
+		0B6BA6B9268CC9A10004BC11 /* ImageKey.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageKey.swift; sourceTree = "<group>"; };
+		0B6BA6BB268CCC290004BC11 /* CellWithInput.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CellWithInput.swift; sourceTree = "<group>"; };
 		0B776C34268B5AD200A6845C /* CellWithSwitch.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CellWithSwitch.swift; sourceTree = "<group>"; };
 		0B776C38268B5B2A00A6845C /* Label.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Label.swift; sourceTree = "<group>"; };
 		0B776C3B268B5B6C00A6845C /* Fonts.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Fonts.swift; sourceTree = "<group>"; };
@@ -331,10 +337,20 @@
 			path = TempUI;
 			sourceTree = "<group>";
 		};
+		0B6BA6B8268CC98B0004BC11 /* Images */ = {
+			isa = PBXGroup;
+			children = (
+				0B6BA6B9268CC9A10004BC11 /* ImageKey.swift */,
+			);
+			path = Images;
+			sourceTree = "<group>";
+		};
 		0B776C33268B5AC300A6845C /* View */ = {
 			isa = PBXGroup;
 			children = (
 				0B776C34268B5AD200A6845C /* CellWithSwitch.swift */,
+				0B6BA6B6268CC3B40004BC11 /* CellWithNavigation.swift */,
+				0B6BA6BB268CCC290004BC11 /* CellWithInput.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -342,6 +358,7 @@
 		0B776C36268B5AFD00A6845C /* UIFramework */ = {
 			isa = PBXGroup;
 			children = (
+				0B6BA6B8268CC98B0004BC11 /* Images */,
 				0B776C41268B5CBC00A6845C /* Extensions */,
 				0B776C3A268B5B5D00A6845C /* Fonts */,
 				0B776C37268B5B0500A6845C /* Views */,
@@ -1048,6 +1065,7 @@
 				807C7B982520B95400F0AB31 /* RadioSection.swift in Sources */,
 				807C7B702520903300F0AB31 /* Section.swift in Sources */,
 				807C7B5525208DEF00F0AB31 /* DetailText.swift in Sources */,
+				0B6BA6B7268CC3B40004BC11 /* CellWithNavigation.swift in Sources */,
 				805076DD252701FA0008678A /* SettingsOLDPresenter.swift in Sources */,
 				8073CB1D251C1B2800F5BB44 /* SettingsOLDView.swift in Sources */,
 				80BAABDC255D815C00BAAF8B /* RegionAddInteractor.swift in Sources */,
@@ -1102,6 +1120,7 @@
 				D677A7982528BB1200E430A0 /* RegionSelectorInteractor.swift in Sources */,
 				805076E2252702BF0008678A /* SettingsOLDModel.swift in Sources */,
 				D69BBC0124F7C74800B74B5A /* SceneDelegate.swift in Sources */,
+				0B6BA6BC268CCC290004BC11 /* CellWithInput.swift in Sources */,
 				0B776C3C268B5B6C00A6845C /* Fonts.swift in Sources */,
 				807C7B8A2520B22500F0AB31 /* NavigationRow.swift in Sources */,
 				D677A7972528BB1200E430A0 /* RegionSelectorViewController.swift in Sources */,
@@ -1113,6 +1132,7 @@
 				805617BD255C2B9500B7F93B /* RealmMigration.swift in Sources */,
 				D69BBC3324F7CB0100B74B5A /* PhoneInputViewController.swift in Sources */,
 				D6EEDEDB2500F91E00EC169B /* Animation.swift in Sources */,
+				0B6BA6BA268CC9A10004BC11 /* ImageKey.swift in Sources */,
 				807C7B3325208C8F00F0AB31 /* SwitchCell.swift in Sources */,
 				80BAABD7255D815C00BAAF8B /* RegionAddPresenter.swift in Sources */,
 				D6A4DE3E265A953C008C05D5 /* LocalizableKey.swift in Sources */,

@@ -17,7 +17,8 @@ enum SettingsViewModel {
 }
 
 protocol BaseCell {
-    var image: String { get }
+    var image: ImageName { get }
+    var isSelectable: Bool { get }
 }
 
 protocol CellWithSwitchProtocol: BaseCell {
@@ -26,7 +27,7 @@ protocol CellWithSwitchProtocol: BaseCell {
 }
 
 protocol CellWithInputDataSource: BaseCell {
-    var value: String { get }
+    var value: String? { get }
 }
 
 protocol CellWithNavigationDataSource: BaseCell {
@@ -34,17 +35,20 @@ protocol CellWithNavigationDataSource: BaseCell {
 }
 
 struct CellWithSwitchModel: CellWithSwitchProtocol {
-    var image: String
+    var isSelectable: Bool = false
+    var image: ImageName
     var title: String
     var isOn: Bool
 }
 
 struct CellWithNavigationModel: CellWithNavigationDataSource {
-    var image: String
+    var isSelectable: Bool = true
+    var image: ImageName
     var title: String
 }
 
 struct CellWithInputModel: CellWithInputDataSource {
-    var image: String
-    var value: String
+    var isSelectable: Bool = false
+    var image: ImageName
+    var value: String?
 }

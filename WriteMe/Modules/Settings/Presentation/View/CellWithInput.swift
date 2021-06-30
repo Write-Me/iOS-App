@@ -1,17 +1,16 @@
 //
-//  CellWithSwitch.swift
+//  CellWithInput.swift
 //  WriteMe
 //
-//  Created by Pets-y on 29.06.2021.
+//  Created by Pets-y on 01.07.2021.
 //  Copyright © 2021 Vladimir Mikhaylov. All rights reserved.
 //
 
 import UIKit
-import SnapKit
 
-class CellWithSwitch: UITableViewCell {
+class CellWithInput: UITableViewCell {
 
-    var switchClicked: ((_ isOn: Bool) -> ())?
+    var valueChanged: ((_ value: String?) -> ())?
     
     private lazy var image: UIImageView = {
         $0.contentMode = .scaleAspectFit
@@ -19,21 +18,16 @@ class CellWithSwitch: UITableViewCell {
         return $0
     }(UIImageView())
 
-    private lazy var title: Label = {
-        $0.textColor = .black
-        $0.text = "Вход в приложение"
+    private lazy var input: UITextField = {
+        $0.placeholder = "По умолчанию"
         return $0
-    }(Label(font: Fonts.m))
-
-    private lazy var switcher: UISwitch = {
-        return $0
-    }(UISwitch())
+    }(UITextField())
     
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
         setupViews()
         setupConstraints()
-        switcher.addTarget(self, action: #selector(switchClicked(_:)), for: .touchUpInside)
+        input.addTarget(self, action: #selector(isValueChanged), for: .allEditingEvents)
     }
 
     required init?(coder: NSCoder) {
@@ -43,8 +37,7 @@ class CellWithSwitch: UITableViewCell {
     private func setupViews() {
         contentView.addSubviews(
             image,
-            title,
-            switcher)
+            input)
     }
 
     private func setupConstraints() {
@@ -55,26 +48,22 @@ class CellWithSwitch: UITableViewCell {
             $0.centerY.equalToSuperview()
         }
 
-        title.snp.makeConstraints {
+        input.snp.makeConstraints {
             $0.centerY.equalToSuperview()
             $0.left.equalTo(image.snp.right).offset(10)
-        }
-
-        switcher.snp.makeConstraints {
             $0.right.equalToSuperview().inset(20)
-            $0.centerY.equalToSuperview()
+        }
+
+    }
+
+    @objc private func isValueChanged() {
+        if let action = self.valueChanged {
+            action(input.text)
         }
     }
 
-    @objc private func switchClicked(_ switcher: UISwitch) {
-        if let action = self.switchClicked {
-            action(switcher.isOn)
-        }
-    }
-
-    public func setup(_ model: CellWithSwitchProtocol) {
+    public func setup(_ model: CellWithInputModel) {
         image.image = model.image.image
-        title.text = model.title
-        switcher.isOn = model.isOn
+        input.text = model.value
     }
 }

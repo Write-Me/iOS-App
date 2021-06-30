@@ -95,6 +95,11 @@ extension MainViewController {
         dataSource?.openSettings()
     }
     
+    @objc private func settingsClickedTwo() {
+        let x = SettingsOLDViewController()
+        present(x, animated: true, completion: nil)
+    }
+    
     @objc private func phoneEntered(_ target: SocialButton) {
         dataSource?.phoneEntered(contentView.phoneInputView.inputTextField.text, type: .whatsapp)
     }

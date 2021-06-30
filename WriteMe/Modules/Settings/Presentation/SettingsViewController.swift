@@ -17,6 +17,9 @@ class SettingsViewController: UIViewController {
         $0.removeTableHeaderView()
         $0.addEmptyViewToFooter()
         $0.register(cellWithClass: CellWithSwitch.self)
+        $0.register(cellWithClass: CellWithNavigation.self)
+        $0.register(cellWithClass: CellWithInput.self)
+        $0.contentInset = UIEdgeInsets(top: 20, left: 0, bottom: 0, right: 0)
         return $0
     }(UITableView(frame: .zero, style: .insetGrouped))
 
@@ -44,7 +47,6 @@ class SettingsViewController: UIViewController {
         self.dataSource?.setup(objectFor: self)
         self.view.backgroundColor = .white
         navigationItem.title = "Настройки"
-
     }
     
     private func setupViews() {
@@ -53,7 +55,7 @@ class SettingsViewController: UIViewController {
 
     private func setupConstraints() {
         tableView.snp.makeConstraints {
-            $0.leading.trailing.top.bottom.equalToSuperview()
+            $0.leading.trailing.bottom.top.equalToSuperview()
         }
     }
 
@@ -75,23 +77,50 @@ extension SettingsViewController: UITableViewDataSource, UITableViewDelegate {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         switch collectionDataSource[indexPath.section][indexPath.row] {
         case .region(let model):
-            break
+            let cell = tableView.dequeueReusableCell(withClass: CellWithNavigation.self)
+            cell.setup(model)
+            cell.cellClicked = { [weak self] in
+            }
+            return cell
         case .regionSwitch(let model):
-            break
+            let cell = tableView.dequeueReusableCell(withClass: CellWithSwitch.self)
+            cell.setup(model)
+            cell.switchClicked = { [weak self] isOn in
+                self?.dataSource?.regionSwitch(isOn)
+            }
+            return cell
         case .defaultText(let model):
-            break
+            let cell = tableView.dequeueReusableCell(withClass: CellWithInput.self)
+            cell.setup(model)
+            cell.valueChanged = { [weak self] value in
+                self?.dataSource?.defaultValue(value)
+            }
+            return cell
         case .defaultTextSwitch(let model):
-            break
+            let cell = tableView.dequeueReusableCell(withClass: CellWithSwitch.self)
+            cell.setup(model)
+            cell.switchClicked = { [weak self] isOn in
+                self?.dataSource?.defaultSwitch(isOn)
+            }
+            return cell
         }
-        let cell = tableView.dequeueReusableCell(withClass: CellWithSwitch.self)
-        cell.switchClicked = { [weak self] isEnabled in
-            Log.i(isEnabled)
-        }
-        return cell
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return UITableView.automaticDimension
+    }
+    
+    open func tableView(_ tableView: UITableView, shouldHighlightRowAt indexPath: IndexPath) -> Bool {
+        switch collectionDataSource[indexPath.section][indexPath.row] {
+        case .region(let model):
+            return model.isSelectable
+        case .regionSwitch(let model):
+            return model.isSelectable
+        case .defaultText(let model):
+            return model.isSelectable
+        case .defaultTextSwitch(let model):
+            return model.isSelectable
+        }
     }
 }
 

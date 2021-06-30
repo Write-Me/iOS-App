@@ -29,6 +29,10 @@ extension ScreenConfigurator {
         return DefaultConfigurator.buildOnNavigationController(with: SettingsFactory(), options: .contained)
     }
     
+    var test: DestinationStep<SettingsViewController, SettingsFactory.Context> {
+        return DefaultConfigurator.buildOnNavigationController(with: SettingsFactory(), options: .current)
+    }
+    
 }
 
 struct DefaultConfigurator: ScreenConfigurator {
