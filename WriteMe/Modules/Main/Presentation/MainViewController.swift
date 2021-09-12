@@ -20,6 +20,7 @@ class MainViewController: UIViewController {
         super.init(nibName: nil, bundle: nil)
         setupView()
         setupTargets()
+        uiTestSetup()
     }
 
     public required init?(coder aDecoder: NSCoder) {
@@ -61,6 +62,13 @@ class MainViewController: UIViewController {
     
     private func setupTargets() {
         contentView.whatsAppButton.addTarget(self, action: #selector(phoneEntered), for: .touchUpInside)
+    }
+    
+    private func uiTestSetup() {
+        contentView.accessibilityId = .mainScreenMainView
+        contentView.phoneInputView.inputTextField.accessibilityId = .mainScreenPhoneInput
+        contentView.whatsAppButton.accessibilityId = .mainScreenWButton
+        navigationItem.rightBarButtonItem?.accessibilityId = .mainScreenSettingsButton
     }
 
 }

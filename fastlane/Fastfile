@@ -12,6 +12,8 @@
 
 # Uncomment the line if you want fastlane to automatically update itself
 # update_fastlane
+ENV['iOS_TG_CHANNEL_ID'] = '272373379'
+ENV['iOS_TG_BOT_APIKEY'] = '1838306664:AAEZ9ysqRmGb737ZzUtwebh17UgaQgkjOwA'
 
 default_platform(:ios)
 
@@ -33,7 +35,7 @@ platform :ios do
 	
     gym(
        scheme: "WriteMe",
-       #workspace: "WriteMe.xcworkspace",
+       workspace: "WriteMe.xcworkspace",
        export_method: "app-store",
        export_options: {
           method: "app-store",
@@ -46,10 +48,11 @@ platform :ios do
        output_directory: "build"
       )
       testflight(ipa: "build/WriteMe.ipa", skip_waiting_for_build_processing: true)
+      upload_symbols_to_crashlytics(
+      	dsym_path: './build/WriteMe.app.dSYM.zip',
+      	gsp_path: './WriteMe/Configs/Firebase/GoogleService-Info.plist'
+      )
       clean_build_artifacts
-      #build_app(xcargs: "-allowProvisioningUpdates")
-    # build_app(scheme: "WriteMe")
-    # upload_to_testflight
   end
 
   desc "Push a new beta build to AppStore"
@@ -80,4 +83,61 @@ platform :ios do
     # build_app(scheme: "WriteMe")
     # upload_to_testflight
   end
+
+  desc "Загрузка в AdHoc"
+  lane :adHoc do
+    get_certificates
+    get_provisioning_profile
+    increment_build_number
+	
+    gym(
+       scheme: "WriteMe",
+       workspace: "WriteMe.xcworkspace",
+       export_method: "ad-hoc",
+       export_options: {
+          method: "ad-hoc",
+          provisioningProfiles: {
+             "swiftment.work.writeme" => "match AppStore swiftment.work.writeme",
+          },
+          signingStyle: "manual"
+       },
+       clean: true,
+       output_directory: "build"
+      )
+      firebase_app_distribution(
+      	 app: '1:826957104423:ios:6fa61bf058b0d259185502',
+      	 ipa_path: './build/WriteMe.ipa',
+      	 groups: 'testers'
+      )
+      upload_symbols_to_crashlytics(
+      	dsym_path: './build/WriteMe.app.dSYM.zip',
+      	gsp_path: './WriteMe/Configs/Firebase/GoogleService-Info.plist'
+      )
+      clean_build_artifacts
+  end
+ 
+  def sendMessage(message)
+    telegram(
+      token: ENV['iOS_TG_BOT_APIKEY'],
+      chat_id: ENV['iOS_TG_CHANNEL_ID'],
+      text: message,
+      parse_mode: 'HTML'
+    )
+  end
+
+  desc "Загрузка в AdHoc"
+  lane :test do
+	sendMessage('TEST')
+  end
+
+  error do |lane, exception|
+    message = "⛔️ pipeline error!\n"\
+      "<i>lane:</i> <pre>#{lane}</pre>\n"\
+      "<i>exception:</i> <pre>#{exception.to_s}</pre>\n"
+    sendMessage(message)
+  end
+
 end
+
+  
+    

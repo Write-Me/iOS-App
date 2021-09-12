@@ -13,7 +13,7 @@ class RealmMigration {
     static let share = RealmMigration()
     
     public func migration() {
-//        self.deleteAll()
+        self.deleteAll()
         Realm.Configuration.defaultConfiguration = Realm.Configuration(
             schemaVersion: 3,
             migrationBlock: { migration, oldSchemaVersion in
