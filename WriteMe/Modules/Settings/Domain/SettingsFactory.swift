@@ -20,12 +20,15 @@ class SettingsFactory: Factory {
         let repository = SettingsRepository(dataSource: dataService)
         let interactor = SettingsNewInteractor(dataSource: repository)
         let presenter = SettingsPresenter(dataSource: interactor)
-        return SettingsViewController(dataSource: presenter)
+        let controller = SettingsViewController(dataSource: presenter)
+        controller.delegate = context.delegate
+        return controller
     }
 
     typealias ViewController = SettingsViewController
     typealias Context = SettingsContext
     struct SettingsContext {
+        weak var delegate: MainViewDelegate?
     }
 
 }

@@ -12,59 +12,50 @@
 
 import UIKit
 
-@objc protocol RegionSelectorRoutingLogic
-{
+@objc protocol RegionSelectorRoutingLogic {
     func routeToSettings()
     func routeToRegionAdd()
 }
 
-protocol RegionSelectorDataPassing
-{
+protocol RegionSelectorDataPassing {
     var dataStore: RegionSelectorDataStore? { get }
 }
 
-class RegionSelectorRouter: NSObject, RegionSelectorRoutingLogic, RegionSelectorDataPassing
-{
-    
+class RegionSelectorRouter: NSObject, RegionSelectorRoutingLogic, RegionSelectorDataPassing {
+
     weak var viewController: RegionSelectorViewController?
     var dataStore: RegionSelectorDataStore?
-    
+
     // MARK: Routing
-    
-    func routeToSettings()
-    {
+
+    func routeToSettings() {
         guard let viewController = viewController else { return }
         passDataToSettings(source: viewController)
         navigateToSettings(source: viewController)
     }
-    
-    func routeToRegionAdd()
-    {
+
+    func routeToRegionAdd() {
         guard let viewController = viewController else { return }
-        let regionAdd = RegionAddViewController()
+        let regionAdd = RegionAddOLDViewController()
         passDataToRegionAdd(source: viewController, destination: regionAdd)
         navigateToRegionAdd(source: viewController, destination: regionAdd)
     }
-    
+
     // MARK: Navigation
-    
-    private func navigateToSettings(source: RegionSelectorViewController?)
-    {
+
+    private func navigateToSettings(source: RegionSelectorViewController?) {
         source?.navigationController?.popViewController(animated: true)
     }
-    
-    private func navigateToRegionAdd(source: RegionSelectorViewController, destination: RegionAddViewController)
-    {
+
+    private func navigateToRegionAdd(source: RegionSelectorViewController, destination: RegionAddOLDViewController) {
         source.navigationController?.pushViewController(destination, animated: true)
     }
-    
+
     // MARK: Passing data
-    private func passDataToSettings(source: RegionSelectorViewController)
-    {
+    private func passDataToSettings(source: RegionSelectorViewController) {
         source.settingsViewController?.interactor?.loadSettings(SettingsOLDModel.ApplySettings.Request())
     }
-    
-    private func passDataToRegionAdd(source: RegionSelectorViewController, destination: RegionAddViewController)
-    {
+
+    private func passDataToRegionAdd(source: RegionSelectorViewController, destination: RegionAddOLDViewController) {
     }
 }

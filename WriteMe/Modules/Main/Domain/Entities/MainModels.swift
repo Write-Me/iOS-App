@@ -16,11 +16,11 @@ struct MainViewModel {
         self.inputMask = model.inputMask
         self.needApplyMask = model.needApplyMask
     }
-    
+
     init(_ model: Settings) {
-        self.needApplyMask = model.isRegionOn
+        needApplyMask = model.isRegionOn
         let regionPhoneCode = model.region?.phoneCode ?? "+7"
-        self.inputMask = "\(regionPhoneCode)[000000000000000000000000]"
+        inputMask = "\(regionPhoneCode)[000000000000000000000000]"
     }
 }
 

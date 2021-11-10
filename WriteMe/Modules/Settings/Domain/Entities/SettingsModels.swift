@@ -8,7 +8,6 @@
 
 import Foundation
 
-
 enum SettingsViewModel {
     case region(CellWithNavigationModel)
     case regionSwitch(CellWithSwitchModel)

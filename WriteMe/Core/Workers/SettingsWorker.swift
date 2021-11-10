@@ -8,28 +8,24 @@
 
 import Foundation
 
-enum SettingEnum: String
-{
+enum SettingEnum: String {
     case region = "region"
     case isRegionOn = "isRegionOn"
     case defaultText = "defaultText"
     case isDefaultTextOn = "isDefaultTextOn"
 }
 
-class SettingsWorker
-{
-    
+class SettingsWorker {
+
     var settings: SettingsProtocol
-    
-    init(settings: SettingsProtocol)
-    {
+
+    init(settings: SettingsProtocol) {
         self.settings = settings
     }
-    
+
 }
 
-protocol SettingsProtocol
-{
+protocol SettingsProtocol {
     func get() -> Settings
     func save(setting: SettingEnum, value: Any?)
     func getInt(setting: SettingEnum) -> Int

@@ -33,4 +33,3 @@ open class TapActionCell: UITableViewCell {
     textLabel?.textColor = tintColor
   }
 }
-

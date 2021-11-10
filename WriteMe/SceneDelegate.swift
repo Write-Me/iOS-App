@@ -21,7 +21,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         let vc = UIViewController()
         window?.rootViewController = vc
         window?.makeKeyAndVisible()
-        MainRouter.main(context: nil).goto()
+        MainRouter.main(context: MainFactory.Context()).goto()
     }
 
     func sceneDidDisconnect(_ scene: UIScene) {
@@ -52,6 +52,4 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         // to restore the scene back to its current state.
     }
 
-
 }
-

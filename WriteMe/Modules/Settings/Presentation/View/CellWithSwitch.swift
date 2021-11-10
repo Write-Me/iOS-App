@@ -11,8 +11,8 @@ import SnapKit
 
 class CellWithSwitch: UITableViewCell {
 
-    var switchClicked: ((_ isOn: Bool) -> ())?
-    
+    var switchClicked: ((_ isOn: Bool) -> Void)?
+
     private lazy var image: UIImageView = {
         $0.contentMode = .scaleAspectFit
         $0.image = UIImage(named: "phone-code")
@@ -20,7 +20,7 @@ class CellWithSwitch: UITableViewCell {
     }(UIImageView())
 
     private lazy var title: Label = {
-        $0.textColor = .black
+        $0.textColor = .label
         $0.text = "Вход в приложение"
         return $0
     }(Label(font: Fonts.m))
@@ -28,7 +28,7 @@ class CellWithSwitch: UITableViewCell {
     private lazy var switcher: UISwitch = {
         return $0
     }(UISwitch())
-    
+
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
         setupViews()

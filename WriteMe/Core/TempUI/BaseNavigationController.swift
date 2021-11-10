@@ -10,15 +10,14 @@ import UIKit
 import RouteComposer
 
 class BaseNavigationController: UINavigationController, UINavigationControllerDelegate {
-    
+
     override func viewDidLoad() {
         super.viewDidLoad()
         setupConfiguation()
         self.delegate = self
     }
-    
+
     private func setupConfiguation() {
         navigationBar.prefersLargeTitles = true
     }
 }
-

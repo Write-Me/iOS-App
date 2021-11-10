@@ -17,6 +17,7 @@ protocol SettingsPresenterDataSource: AnyObject {
     func regionSwitch(_ isOn: Bool)
     func defaultValue(_ value: String?)
     func defaultSwitch(_ isOn: Bool)
+    func navigateToRegionList()
 }
 
 protocol SettingsPresenterViewer: AnyObject {

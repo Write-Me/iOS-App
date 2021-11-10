@@ -24,5 +24,9 @@ class MainFactory: Factory {
     }
 
     typealias ViewController = MainViewController
-    typealias Context = Any?
+    typealias Context = MainContext
+
+    struct MainContext {
+
+    }
 }

@@ -15,17 +15,16 @@ protocol PhoneInputPresentationLogic {
     func loadSettings(_viewModel: PhoneInputModel.LoadSettings.Response)
 }
 
-class PhoneInputPresenter
-{
-    
+class PhoneInputPresenter {
+
     weak var viewController: PhoneInputViewControllerProtocol?
     var listener = MaskedTextFieldDelegate()
-    
+
     public func setup(settings: Settings) {
-        if (viewController?.contentView.phoneInputView.inputTextField.isFirstResponder ?? false) {
+        if viewController?.contentView.phoneInputView.inputTextField.isFirstResponder ?? false {
             viewController?.contentView.phoneInputView.inputTextField.text = nil
         }
-        if (settings.isRegionOn) {
+        if settings.isRegionOn {
             let regionPhoneCode = settings.region?.phoneCode ?? "+7"
             listener.primaryMaskFormat = "\(regionPhoneCode)[000000000000000000000000]"
             viewController?.contentView.phoneInputView.inputTextField.keyboardType = .decimalPad
@@ -41,13 +40,13 @@ extension PhoneInputPresenter: PhoneInputPresentationLogic {
     func loadSettings(_viewModel: PhoneInputModel.LoadSettings.Response) {
         setup(settings: _viewModel.settings)
     }
-    
+
     func errorPhoneInput() {
         if let view = viewController?.contentView.phoneInputView {
             Animation.share.shake(view: view)
         }
     }
-    
+
     func errorOpenApp(_ viewModel: PhoneInputModel.ToApp.Response) {
         if let view = viewModel.sender {
             Animation.share.shake(view: view)

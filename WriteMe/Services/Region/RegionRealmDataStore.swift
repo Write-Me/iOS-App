@@ -9,29 +9,26 @@
 import RealmSwift
 import Combine
 
-class RegionRealmDataStore: RegionStoreProtocol
-{
-    
-    var regionData: RealmDataProtocol = RealmDataDelegate<Region>()
-    
-    func fetchRegions(synchronous: Bool) -> AnyPublisher<[Region], Never>
-    {
+class RegionRealmDataStore: RegionStoreProtocol {
+
+    var regionData: RealmObjectProtocol = RealmData<Region>()
+
+    func fetchRegions(synchronous: Bool) -> AnyPublisher<[Region], Never> {
         return Future<[Region], Never> { promise in
             promise(.success(self.regionData.all()))
         }.eraseToAnyPublisher()
     }
-    
-    func saveRegions(regions: [Region]) -> AnyPublisher<[Region], Never>
-    {
+
+    func saveRegions(regions: [Region]) -> AnyPublisher<[Region], Never> {
         return Future<[Region], Never> { promise in
             promise(.success(self.regionData.save(objects: regions)))
         }.eraseToAnyPublisher()
     }
-    
+
     func saveRegion(region: Region) -> AnyPublisher<Region, Never> {
         return Future<Region, Never> { promise in
             promise(.success(self.regionData.save(object: region)))
         }.eraseToAnyPublisher()
     }
-    
+
 }

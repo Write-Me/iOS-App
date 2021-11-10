@@ -20,7 +20,7 @@ class SettingsPresenter {
     deinit {
         print("deinit presenter")
     }
-    
+
     private func getSections() {
         let settings = SettingsDefaultsDataStore.shared.get()
         let sectionOne: [SettingsViewModel] = [
@@ -37,18 +37,22 @@ class SettingsPresenter {
 }
 
 extension SettingsPresenter: SettingsPresenterDataSource {
+    func navigateToRegionList() {
+        MainRouter.regionList(context: RegionListFactory.Context()).goto()
+    }
+
     func regionSwitch(_ isOn: Bool) {
         SettingsDefaultsDataStore.shared.save(setting: .isRegionOn, value: isOn)
     }
-    
+
     func defaultValue(_ value: String?) {
         SettingsDefaultsDataStore.shared.save(setting: .defaultText, value: value)
     }
-    
+
     func defaultSwitch(_ isOn: Bool) {
         SettingsDefaultsDataStore.shared.save(setting: .isDefaultTextOn, value: isOn)
     }
-    
+
     func setup(objectFor view: SettingsViewViewer) {
         self.viewer = view
         self.dataSource?.setup(objectFor: self)

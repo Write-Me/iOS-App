@@ -12,40 +12,35 @@
 
 import UIKit
 
-protocol RegionAddDisplayLogic: class
-{
+protocol RegionAddDisplayLogic: class {
     var contentView: RegionAddView { get }
     func setup(viewModel: RegionAdd.Setup.ViewModel)
     func save(viewModel: RegionAdd.Save.ViewModel)
 }
 
-class RegionAddViewController: UIViewController, RegionAddDisplayLogic
-{
+class RegionAddOLDViewController: UIViewController, RegionAddDisplayLogic {
     internal lazy var contentView = RegionAddView()
     var interactor: RegionAddBusinessLogic?
     var router: (NSObjectProtocol & RegionAddRoutingLogic & RegionAddDataPassing)?
-    
+
     // MARK: Object lifecycle
-    
-    override init(nibName nibNameOrNil: String?, bundle nibBundleOrNil: Bundle?)
-    {
+
+    override init(nibName nibNameOrNil: String?, bundle nibBundleOrNil: Bundle?) {
         super.init(nibName: nibNameOrNil, bundle: nibBundleOrNil)
         setup()
     }
-    
-    required init?(coder aDecoder: NSCoder)
-    {
+
+    required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
         setup()
     }
-    
+
     // MARK: Setup
-    
-    private func setup()
-    {
+
+    private func setup() {
         let viewController = self
-        let interactor = RegionAddInteractor()
-        let presenter = RegionAddPresenter()
+        let interactor = RegionAddOLDInteractor()
+        let presenter = RegionAddOLDPresenter()
         let router = RegionAddRouter()
         viewController.interactor = interactor
         viewController.router = router
@@ -55,9 +50,8 @@ class RegionAddViewController: UIViewController, RegionAddDisplayLogic
         router.dataStore = interactor
         setupView()
     }
-    
-    private func setupView()
-    {
+
+    private func setupView() {
         navigationController?.navigationBar.prefersLargeTitles = false
         navigationItem.title = NSLocalizedString("RegionAdd", comment: "")
         navigationItem.rightBarButtonItem = UIBarButtonItem(title: NSLocalizedString("Save", comment: ""),
@@ -65,40 +59,34 @@ class RegionAddViewController: UIViewController, RegionAddDisplayLogic
                                                             target: self,
                                                             action: #selector(saveClicked))
     }
-    
+
     // MARK: View lifecycle
-    
-    override func loadView()
-    {
+
+    override func loadView() {
         view = contentView
     }
-    
-    override func viewDidLoad()
-    {
+
+    override func viewDidLoad() {
         super.viewDidLoad()
-        
+
     }
-    
-    override func viewWillAppear(_ animated: Bool)
-    {
+
+    override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         setupData()
     }
-    
-    func setupData()
-    {
+
+    func setupData() {
         interactor?.setup(request: RegionAdd.Setup.Request())
     }
-    
-    func setup(viewModel: RegionAdd.Setup.ViewModel)
-    {
+
+    func setup(viewModel: RegionAdd.Setup.ViewModel) {
     }
-    
-    func save(viewModel: RegionAdd.Save.ViewModel)
-    {
+
+    func save(viewModel: RegionAdd.Save.ViewModel) {
         router?.routeToRegionsSelector()
     }
-    
+
     @objc private func saveClicked() {
         let name = contentView.nameInputView.inputTextField.text
         let phoneCode = contentView.codeInputView.inputTextField.text

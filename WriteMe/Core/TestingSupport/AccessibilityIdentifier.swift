@@ -9,8 +9,8 @@
 import Foundation
 
 enum AccessibilityIdentifier: String {
-    
-    //MARK: - Main screen
+
+    // MARK: - Main screen
     case mainScreenMainView
     case mainScreenPhoneInput
     case mainScreenWButton

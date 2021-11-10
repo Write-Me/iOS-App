@@ -9,10 +9,9 @@
 import UIKit
 
 open class SwitchRow<T: SwitchCell>: SwitchRowCompatible {
-    
-    
+
     // MARK: - Initializer
-    
+
     public init(
         text: String,
         detailText: DetailText? = nil,
@@ -28,9 +27,9 @@ open class SwitchRow<T: SwitchCell>: SwitchRowCompatible {
         self.customize = customization
         self.action = action
     }
-    
+
     // MARK: - SwitchRowCompatible
-    
+
     public var switchValue: Bool = false {
         didSet {
             guard switchValue != oldValue else {
@@ -41,27 +40,27 @@ open class SwitchRow<T: SwitchCell>: SwitchRowCompatible {
             }
         }
     }
-    
+
     // MARK: - Row
-    
+
     public let text: String
     public let detailText: DetailText?
     public let action: ((Row) -> Void)?
-    
+
     // MARK: - RowStyle
     public let cellType: UITableViewCell.Type = T.self
-    
+
     public var cellReuseIdentifier: String {
         return "switchRowCellId"
     }
-    
+
     public var cellStyle: UITableViewCell.CellStyle {
         return detailText?.style ?? .default
     }
-    
+
     public let icon: Icon?
     public let accessoryType: UITableViewCell.AccessoryType = .none
     public let isSelectable: Bool = false
     public let customize: ((UITableViewCell, Row & RowStyle) -> Void)?
-    
+
 }

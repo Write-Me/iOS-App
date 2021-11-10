@@ -14,23 +14,23 @@ protocol SettingsOLDPresentationLogic {
 }
 
 class SettingsOLDPresenter {
-    
+
     weak var viewController: SettingsOLDViewControllerProtocol?
     private var interactor: SettingsOLDBusinessLogic
-    
+
     init(interactor: SettingsOLDBusinessLogic) {
         self.interactor = interactor
     }
-    
+
 }
 
 extension SettingsOLDPresenter: SettingsOLDPresentationLogic {
-    
+
     func loadSettings(_ viewModel: SettingsOLDModel.ApplySettings.Response) {
         viewController?.loadSettings(SettingsOLDModel.ApplySettings.ViewModel(settings: viewModel.settings))
     }
-    
+
     func switchIsRegionOn(_ viewModel: SettingsOLDModel.ToggleIsRegionOn.Response) {
     }
-    
+
 }

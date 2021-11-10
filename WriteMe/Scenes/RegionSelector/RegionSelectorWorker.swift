@@ -13,10 +13,9 @@
 import Foundation
 import Combine
 
-class RegionSelectorWorker
-{
+class RegionSelectorWorker {
     private let regionAPI: RegionStoreProtocol
-    
+
     init(regionAPI: RegionStoreProtocol = RegionAPI()) {
         self.regionAPI = regionAPI
     }

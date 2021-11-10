@@ -9,69 +9,68 @@
 import Foundation
 
 enum SettingsOLDModel {
-    
+
     enum ApplySettings {
-        
+
         // vc -> interactor
         struct Request {
         }
-        
+
         // interactor -> presenter
         struct Response {
             let settings: Settings
         }
-        
+
         // presenter -> vc
         struct ViewModel {
             let settings: Settings
         }
     }
-    
+
     enum ToggleIsRegionOn {
-        
+
         // vc -> interactor
         struct Request {
         }
-        
+
         // interactor -> presenter
         struct Response {
         }
-        
+
         // presenter -> vc
         struct ViewModel {
         }
     }
-    
+
     enum ToggleIsDefaultTextOn {
-        
+
         // vc -> interactor
         struct Request {
         }
-        
+
         // interactor -> presenter
         struct Response {
         }
-        
+
         // presenter -> vc
         struct ViewModel {
         }
     }
-    
+
     enum SetDefaultText {
-        
+
         // vc -> interactor
         struct Request {
             let value: String?
         }
-        
+
         // interactor -> presenter
         struct Response {
         }
-        
+
         // presenter -> vc
         struct ViewModel {
         }
     }
-    
-}
 
+}

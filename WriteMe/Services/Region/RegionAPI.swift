@@ -9,34 +9,29 @@
 import Foundation
 import Combine
 
-fileprivate struct Envelope: Codable {
+private struct Envelope: Codable {
     let regions: [Region]
 }
 
-class RegionAPI: RegionStoreProtocol
-{
+class RegionAPI: RegionStoreProtocol {
     func saveRegions(regions: [Region]) -> AnyPublisher<[Region], Never> {
-        return Future<[Region], Never> { promise in
+        return Future<[Region], Never> { _ in
         }.eraseToAnyPublisher()
     }
-    
-    var localFile: URL
-    {
+
+    var localFile: URL {
         let fileURL = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask)[0].appendingPathComponent("points.json")
         print("In case you need to delete the database: \(fileURL)")
         return fileURL
     }
-    
-    var defaultFile: URL
-    {
+
+    var defaultFile: URL {
         return Bundle.main.url(forResource: "regions", withExtension: "json")!
     }
 }
 
-extension RegionAPI
-{
-    func fetchRegions(synchronous: Bool) -> AnyPublisher<[Region], Never>
-    {
+extension RegionAPI {
+    func fetchRegions(synchronous: Bool) -> AnyPublisher<[Region], Never> {
         return Future<[Region], Never> { promise in
             self.load(self.defaultFile) { points in
                 DispatchQueue.main.async {
@@ -45,22 +40,21 @@ extension RegionAPI
             }
         }.eraseToAnyPublisher()
     }
-    
+
     func saveRegion(region: Region) -> AnyPublisher<Region, Never> {
-        return Future<Region, Never> { promise in
+        return Future<Region, Never> { _ in
         }.eraseToAnyPublisher()
     }
 }
 
-extension RegionAPI
-{
+extension RegionAPI {
     private func load(_ file: URL, completion: @escaping ([Region]) -> Void) {
         DispatchQueue.global(qos: .background).async {
             let points = self.loadSynchronously(file)
             completion(points)
         }
     }
-    
+
     private func loadSynchronously(_ file: URL) -> [Region] {
         do {
             let data = try Data(contentsOf: file)
@@ -71,7 +65,7 @@ extension RegionAPI
             return loadSynchronously(defaultFile)
         }
     }
-    
+
     private func clear() {
         try? FileManager.default.removeItem(at: localFile)
     }

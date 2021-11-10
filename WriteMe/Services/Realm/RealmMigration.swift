@@ -9,21 +9,21 @@
 import RealmSwift
 
 class RealmMigration {
-    
+
     static let share = RealmMigration()
-    
+
     public func migration() {
         self.deleteAll()
         Realm.Configuration.defaultConfiguration = Realm.Configuration(
             schemaVersion: 3,
-            migrationBlock: { migration, oldSchemaVersion in
-                if (oldSchemaVersion < 1) {
-                    
+            migrationBlock: { _, oldSchemaVersion in
+                if oldSchemaVersion < 1 {
+
                 }
         })
-        let _ = try! Realm()
+        _ = try! Realm()
     }
-    
+
     public func deleteAll() {
         let realm = try! Realm()
         try! realm.write {

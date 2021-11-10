@@ -9,9 +9,36 @@
 import UIKit
 import InputMask
 
-class MainViewController: UIViewController {
+protocol MainViewDelegate: AnyObject {
+    func settingsUpdated()
+}
 
-    private lazy var contentView = PhoneInputView()
+class MainViewController: FlexibleScrollViewController {
+
+    lazy var phoneInputView: InputView = {
+        let view = InputView(effect: UIBlurEffect(style: .systemMaterial))
+        return view
+    }()
+
+    lazy var whatsAppButton: SocialButton = {
+        let view = SocialButton()
+        view.type = .whatsapp
+        return view
+    }()
+
+    lazy var telegrammAppButton: SocialButton = {
+        let view = SocialButton()
+        view.type = .telegram
+        return view
+    }()
+
+    lazy var contentVStack: UIStackView = {
+        $0.distribution = .fillProportionally
+        $0.axis = .vertical
+        $0.spacing = 16
+        return $0
+    }(UIStackView(arrangedSubviews: [phoneInputView, whatsAppButton]))
+
     private var dataSource: MainPresenterDataSource?
     var listener = MaskedTextFieldDelegate()
 
@@ -26,31 +53,40 @@ class MainViewController: UIViewController {
     public required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
     }
-    
-    override func loadView() {
-        view = contentView
-    }
 
     // MARK: Life cycle
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        setupViews()
+        setupConstraints()
         self.dataSource?.setup(objectFor: self)
-        self.view.backgroundColor = .white
-        navigationController?.presentationController?.delegate = self
     }
-    
+
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        if (contentView.phoneInputView.inputTextField.isFirstResponder ?? false) {
-            contentView.phoneInputView.inputTextField.text = nil
+        Log.t("viewWillAppear")
+        if phoneInputView.inputTextField.isFirstResponder ?? false {
+            phoneInputView.inputTextField.text = nil
+        }
+    }
+
+    private func setupViews() {
+        view.backgroundColor = .systemBackground
+        contentView.addSubviews(contentVStack)
+    }
+
+    private func setupConstraints() {
+        contentVStack.snp.makeConstraints {
+            $0.top.equalToSuperview().offset(16)
+            $0.left.equalToSuperview().offset(16)
+            $0.right.equalToSuperview().inset(16)
         }
     }
 
     deinit {
         Log.t("deinit view")
     }
-    
+
     private func setupView() {
         navigationController?.navigationBar.prefersLargeTitles = true
         navigationItem.title = NSLocalizedString("EnterPhone", comment: "")
@@ -59,15 +95,14 @@ class MainViewController: UIViewController {
                                                             target: self ,
                                                             action: #selector(settingsClicked))
     }
-    
+
     private func setupTargets() {
-        contentView.whatsAppButton.addTarget(self, action: #selector(phoneEntered), for: .touchUpInside)
+        whatsAppButton.addTarget(self, action: #selector(phoneEntered), for: .touchUpInside)
     }
-    
+
     private func uiTestSetup() {
-        contentView.accessibilityId = .mainScreenMainView
-        contentView.phoneInputView.inputTextField.accessibilityId = .mainScreenPhoneInput
-        contentView.whatsAppButton.accessibilityId = .mainScreenWButton
+        phoneInputView.inputTextField.accessibilityId = .mainScreenPhoneInput
+        whatsAppButton.accessibilityId = .mainScreenWButton
         navigationItem.rightBarButtonItem?.accessibilityId = .mainScreenSettingsButton
     }
 
@@ -78,45 +113,40 @@ extension MainViewController: MainViewViewer {
         if UIApplication.shared.canOpenURL(url) {
             UIApplication.shared.open(url)
         } else {
-            Animation.share.shake(view: contentView.phoneInputView)
+            Animation.share.shake(view: phoneInputView)
         }
     }
-    
+
     func fill(with viewModel: MainViewModel) {
-        if (viewModel.needApplyMask) {
+        let content = UIPasteboard.general.string
+        Log.t(content)
+        if viewModel.needApplyMask {
             listener.primaryMaskFormat = viewModel.inputMask ?? ""
-            contentView.phoneInputView.inputTextField.keyboardType = .decimalPad
-            contentView.phoneInputView.inputTextField.delegate = listener
+            phoneInputView.inputTextField.keyboardType = .decimalPad
+            phoneInputView.inputTextField.delegate = listener
         } else {
-            contentView.phoneInputView.inputTextField.keyboardType = .default
-            contentView.phoneInputView.inputTextField.delegate = nil
+            phoneInputView.inputTextField.keyboardType = .default
+            phoneInputView.inputTextField.delegate = nil
         }
     }
-    
+
     func errorPhoneInput() {
-        Animation.share.shake(view: contentView.phoneInputView)
+        Animation.share.shake(view: phoneInputView)
     }
 }
 
 extension MainViewController {
     @objc private func settingsClicked() {
-        dataSource?.openSettings()
+        dataSource?.openSettings(delegate: self)
     }
-    
-    @objc private func settingsClickedTwo() {
-        let x = SettingsOLDViewController()
-        present(x, animated: true, completion: nil)
-    }
-    
+
     @objc private func phoneEntered(_ target: SocialButton) {
-        dataSource?.phoneEntered(contentView.phoneInputView.inputTextField.text, type: .whatsapp)
+        dataSource?.phoneEntered(phoneInputView.inputTextField.text, type: .whatsapp)
     }
 }
 
-extension MainViewController: UIAdaptivePresentationControllerDelegate
-{
-    func presentationControllerWillDismiss(_ presentationController: UIPresentationController) {
-        viewWillAppear(true)
+extension MainViewController: MainViewDelegate {
+    func settingsUpdated() {
+        dataSource?.reloadData()
     }
-}
-
+ }

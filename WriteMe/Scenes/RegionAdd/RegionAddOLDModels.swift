@@ -12,38 +12,28 @@
 
 import UIKit
 
-enum RegionAdd
-{
-    struct RegionFormFields
-    {
+enum RegionAdd {
+    struct RegionFormFields {
         var name: String?
         var phoneCode: String?
     }
     // MARK: Use cases
-    enum Setup
-    {
-        struct Request
-        {
+    enum Setup {
+        struct Request {
         }
-        struct Response
-        {
+        struct Response {
         }
-        struct ViewModel
-        {
+        struct ViewModel {
         }
     }
-    
-    enum Save
-    {
-        struct Request
-        {
+
+    enum Save {
+        struct Request {
             var regionFormFields: RegionFormFields
         }
-        struct Response
-        {
+        struct Response {
         }
-        struct ViewModel
-        {
+        struct ViewModel {
         }
     }
 }

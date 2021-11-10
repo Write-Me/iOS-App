@@ -12,37 +12,32 @@
 
 import UIKit
 
-protocol RegionSelectorDisplayLogic: class
-{
+protocol RegionSelectorDisplayLogic: class {
     func fetchRegions(viewModel: RegionSelector.FetchRegion.ViewModel)
     func saveRegion(viewModel: RegionSelector.SaveRegion.ViewModel)
 }
 
-class RegionSelectorViewController: UIViewController, RegionSelectorDisplayLogic
-{
+class RegionSelectorViewController: UIViewController, RegionSelectorDisplayLogic {
     internal lazy var contentView = RegionView()
     var interactor: RegionSelectorBusinessLogic?
     var router: (NSObjectProtocol & RegionSelectorRoutingLogic & RegionSelectorDataPassing)?
     var settingsViewController: SettingsOLDViewController?
-    
+
     // MARK: Object lifecycle
-    
-    override init(nibName nibNameOrNil: String?, bundle nibBundleOrNil: Bundle?)
-    {
+
+    override init(nibName nibNameOrNil: String?, bundle nibBundleOrNil: Bundle?) {
         super.init(nibName: nibNameOrNil, bundle: nibBundleOrNil)
         setup()
     }
-    
-    required init?(coder aDecoder: NSCoder)
-    {
+
+    required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
         setup()
     }
-    
+
     // MARK: Setup
-    
-    private func setup()
-    {
+
+    private func setup() {
         let viewController = self
         let interactor = RegionSelectorInteractor()
         let presenter = RegionSelectorPresenter()
@@ -56,9 +51,8 @@ class RegionSelectorViewController: UIViewController, RegionSelectorDisplayLogic
         contentView.viewController = viewController
         setupView()
     }
-    
-    private func setupView()
-    {
+
+    private func setupView() {
         view.backgroundColor = UIColor(named: "background")
         navigationController?.navigationBar.prefersLargeTitles = false
         navigationItem.title = NSLocalizedString("RegionSelect", comment: "")
@@ -67,11 +61,10 @@ class RegionSelectorViewController: UIViewController, RegionSelectorDisplayLogic
                                                             target: self ,
                                                             action: #selector(openRegionAdd))
     }
-    
+
     // MARK: Routing
-    
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?)
-    {
+
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if let scene = segue.identifier {
             let selector = NSSelectorFromString("routeTo\(scene)WithSegue:")
             if let router = router, router.responds(to: selector) {
@@ -79,41 +72,36 @@ class RegionSelectorViewController: UIViewController, RegionSelectorDisplayLogic
             }
         }
     }
-    
+
     // MARK: View lifecycle
-    
-    override func loadView()
-    {
+
+    override func loadView() {
         view = contentView
     }
-    
-    override func viewDidLoad()
-    {
+
+    override func viewDidLoad() {
         super.viewDidLoad()
-        
+
     }
-    
-    override func viewWillAppear(_ animated: Bool)
-    {
+
+    override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         loadRegions()
     }
-    
-    func loadRegions()
-    {
+
+    func loadRegions() {
         let request = RegionSelector.FetchRegion.Request()
         interactor?.fetchRegions(reguest: request)
     }
-    
-    func fetchRegions(viewModel: RegionSelector.FetchRegion.ViewModel)
-    {
+
+    func fetchRegions(viewModel: RegionSelector.FetchRegion.ViewModel) {
         contentView.setupData(regions: viewModel.regions)
     }
-    
+
     func saveRegion(viewModel: RegionSelector.SaveRegion.ViewModel) {
         router?.routeToSettings()
     }
-    
+
     @objc private func openRegionAdd() {
         router?.routeToRegionAdd()
     }

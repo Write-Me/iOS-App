@@ -9,9 +9,9 @@
 import UIKit
 
 open class NavigationRow<T: UITableViewCell>: NavigationRowCompatible {
-    
+
     // MARK: - Initializer
-    
+
     public init(
         text: String,
         detailText: DetailText,
@@ -27,28 +27,28 @@ open class NavigationRow<T: UITableViewCell>: NavigationRowCompatible {
         self.action = action
         self.accessoryButtonAction = accessoryButtonAction
     }
-    
+
     // MARK: - Row
-    
+
     public let text: String
     public let detailText: DetailText?
     public let action: ((Row) -> Void)?
     public let accessoryButtonAction: ((Row) -> Void)?
-    
+
     // MARK: - RowStyle
-    
+
     public let cellType: UITableViewCell.Type = T.self
-    
+
     public var cellReuseIdentifier: String {
         return "navigationRowCellId"
     }
-    
+
     public var cellStyle: UITableViewCell.CellStyle {
         return detailText?.style ?? .default
     }
-    
+
     public let icon: Icon?
-    
+
     public var accessoryType: UITableViewCell.AccessoryType {
         switch (action, accessoryButtonAction) {
         case (nil, nil):      return .none
@@ -57,17 +57,17 @@ open class NavigationRow<T: UITableViewCell>: NavigationRowCompatible {
         case (.some, .some):  return .detailDisclosureButton
         }
     }
-    
+
     public var isSelectable: Bool {
         return action != nil
     }
-    
+
     public let customize: ((UITableViewCell, Row & RowStyle) -> Void)?
-    
+
 }
 
 internal extension UITableViewCell.CellStyle {
-    
+
     var stringValue: String {
         switch self {
         case .default:    return ".default"
@@ -77,5 +77,5 @@ internal extension UITableViewCell.CellStyle {
         @unknown default: return ".default"
         }
     }
-    
+
 }

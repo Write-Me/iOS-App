@@ -3,13 +3,13 @@ platform :ios, '13.0'
 use_frameworks!
 
 def firebase 
-  	pod 'Firebase/Crashlytics', '~> 8.0.0'
-  	pod 'Firebase/Analytics', '~> 8.0.0'
-	pod 'RealmSwift', '~> 10.5.1'
+  	pod 'Firebase/Crashlytics', '8.9.1'
+  	pod 'Firebase/Analytics', '8.9.1'
 end 
 
 def sharePods 
   	firebase()
+	pod 'RealmSwift', '10.19.0'
 end 
 
 target 'WriteMe' do

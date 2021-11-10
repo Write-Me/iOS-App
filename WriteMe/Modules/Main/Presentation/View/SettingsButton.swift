@@ -13,7 +13,7 @@ class SettingsButton: UIButton {
         super.init(frame: frame)
         setImage(UIImage(named: "settings"), for: .normal)
     }
-    
+
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }

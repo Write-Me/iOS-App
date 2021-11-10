@@ -9,7 +9,7 @@
 import UIKit
 
 class SettingsViewController: UIViewController {
-    
+
     private lazy var tableView: UITableView = {
         $0.delegate = self
         $0.dataSource = self
@@ -23,6 +23,7 @@ class SettingsViewController: UIViewController {
         return $0
     }(UITableView(frame: .zero, style: .insetGrouped))
 
+    public weak var delegate: MainViewDelegate?
     private var dataSource: SettingsPresenterDataSource?
     private var collectionDataSource: [[SettingsViewModel]] = [[]] {
         didSet {
@@ -48,7 +49,7 @@ class SettingsViewController: UIViewController {
         self.view.backgroundColor = .white
         navigationItem.title = "Настройки"
     }
-    
+
     private func setupViews() {
         view.addSubviews(tableView)
     }
@@ -59,6 +60,11 @@ class SettingsViewController: UIViewController {
         }
     }
 
+    override func viewDidDisappear(_ animated: Bool) {
+        super.viewDidDisappear(animated)
+        delegate?.settingsUpdated()
+    }
+
     deinit {
         Log.t("deinit view")
     }
@@ -66,50 +72,56 @@ class SettingsViewController: UIViewController {
 }
 
 extension SettingsViewController: UITableViewDataSource, UITableViewDelegate {
-    
+
     func numberOfSections(in tableView: UITableView) -> Int {
         return collectionDataSource.count
     }
+
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return collectionDataSource[section].count
     }
-    
+
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         switch collectionDataSource[indexPath.section][indexPath.row] {
         case .region(let model):
             let cell = tableView.dequeueReusableCell(withClass: CellWithNavigation.self)
             cell.setup(model)
             cell.cellClicked = { [weak self] in
+                guard let self = self else { return }
+                self.dataSource?.navigateToRegionList()
             }
             return cell
         case .regionSwitch(let model):
             let cell = tableView.dequeueReusableCell(withClass: CellWithSwitch.self)
             cell.setup(model)
             cell.switchClicked = { [weak self] isOn in
-                self?.dataSource?.regionSwitch(isOn)
+                guard let self = self else { return }
+                self.dataSource?.regionSwitch(isOn)
             }
             return cell
         case .defaultText(let model):
             let cell = tableView.dequeueReusableCell(withClass: CellWithInput.self)
             cell.setup(model)
             cell.valueChanged = { [weak self] value in
-                self?.dataSource?.defaultValue(value)
+                guard let self = self else { return }
+                self.dataSource?.defaultValue(value)
             }
             return cell
         case .defaultTextSwitch(let model):
             let cell = tableView.dequeueReusableCell(withClass: CellWithSwitch.self)
             cell.setup(model)
             cell.switchClicked = { [weak self] isOn in
-                self?.dataSource?.defaultSwitch(isOn)
+                guard let self = self else { return }
+                self.dataSource?.defaultSwitch(isOn)
             }
             return cell
         }
     }
-    
+
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return UITableView.automaticDimension
     }
-    
+
     open func tableView(_ tableView: UITableView, shouldHighlightRowAt indexPath: IndexPath) -> Bool {
         switch collectionDataSource[indexPath.section][indexPath.row] {
         case .region(let model):
@@ -128,5 +140,5 @@ extension SettingsViewController: SettingsViewViewer {
     func showSections(model: [[SettingsViewModel]]) {
         collectionDataSource = model
     }
-    
+
 }

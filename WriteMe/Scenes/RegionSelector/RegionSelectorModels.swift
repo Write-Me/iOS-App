@@ -12,35 +12,26 @@
 
 import UIKit
 
-enum RegionSelector
-{
+enum RegionSelector {
     // MARK: Use cases
-    enum FetchRegion
-    {
-        struct Request
-        {
+    enum FetchRegion {
+        struct Request {
         }
-        struct Response
-        {
+        struct Response {
             let regions: [Region]
         }
-        struct ViewModel
-        {
+        struct ViewModel {
             let regions: [Region]
         }
     }
-    
-    enum SaveRegion
-    {
-        struct Request
-        {
+
+    enum SaveRegion {
+        struct Request {
             let region: Region
         }
-        struct Response
-        {
+        struct Response {
         }
-        struct ViewModel
-        {
+        struct ViewModel {
         }
     }
 }

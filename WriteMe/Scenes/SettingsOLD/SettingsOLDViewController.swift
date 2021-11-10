@@ -8,15 +8,13 @@
 
 import UIKit
 
-protocol SettingsOLDViewControllerProtocol: class
-{
+protocol SettingsOLDViewControllerProtocol: class {
     var contentView: SettingsOLDView { get }
     func loadSettings(_ viewModel: SettingsOLDModel.ApplySettings.ViewModel)
 }
 
-class SettingsOLDViewController: UIViewController
-{
-    
+class SettingsOLDViewController: UIViewController {
+
     internal lazy var contentView: SettingsOLDView = {
         let view = SettingsOLDView()
         view.delegate = self
@@ -25,26 +23,22 @@ class SettingsOLDViewController: UIViewController
     public var interactor: SettingsOLDBusinessLogic?
     var router: (NSObjectProtocol & SettingsOLDRoutingLogic)?
     public var phoneInputViewController: PhoneInputViewController?
-    
-    override func loadView()
-    {
+
+    override func loadView() {
         view = contentView
     }
-    
-    override func viewDidLoad()
-    {
+
+    override func viewDidLoad() {
         super.viewDidLoad()
         setup()
     }
-    
-    override func viewWillAppear(_ animated: Bool)
-    {
+
+    override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         loadData()
     }
-    
-    private func setup()
-    {
+
+    private func setup() {
         let viewController = self
         let interactor = SettingsOLDInteractor()
         let router = SettingsOLDRouter()
@@ -56,25 +50,21 @@ class SettingsOLDViewController: UIViewController
         viewController.router = router
         setupView()
     }
-    
-    private func setupView()
-    {
+
+    private func setupView() {
         view.backgroundColor = UIColor(named: "background")
         navigationController?.navigationBar.prefersLargeTitles = false
         navigationItem.title = LocalizableKey.Settings.title.localized()
     }
-    
-    private func loadData()
-    {
+
+    private func loadData() {
         interactor?.loadSettings(SettingsOLDModel.ApplySettings.Request())
     }
 }
 
-extension SettingsOLDViewController: SettingsOLDViewControllerProtocol
-{
+extension SettingsOLDViewController: SettingsOLDViewControllerProtocol {
     func loadSettings(_ viewModel: SettingsOLDModel.ApplySettings.ViewModel) {
         contentView.setup(settings: viewModel.settings)
     }
-    
+
 }
- 

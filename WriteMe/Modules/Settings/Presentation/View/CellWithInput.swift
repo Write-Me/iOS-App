@@ -10,8 +10,8 @@ import UIKit
 
 class CellWithInput: UITableViewCell {
 
-    var valueChanged: ((_ value: String?) -> ())?
-    
+    var valueChanged: ((_ value: String?) -> Void)?
+
     private lazy var image: UIImageView = {
         $0.contentMode = .scaleAspectFit
         $0.image = UIImage(named: "phone-code")
@@ -19,10 +19,11 @@ class CellWithInput: UITableViewCell {
     }(UIImageView())
 
     private lazy var input: UITextField = {
+        $0.textColor = .label
         $0.placeholder = "По умолчанию"
         return $0
     }(UITextField())
-    
+
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
         setupViews()

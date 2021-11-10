@@ -9,7 +9,7 @@
 import UIKit
 
 open class InputRow<T: InputCell>: InputRowCompatible {
-    
+
     public init(
         placeholder: String?,
         inputValue: String? = nil,
@@ -23,27 +23,26 @@ open class InputRow<T: InputCell>: InputRowCompatible {
         self.customize = customization
         self.action = action
     }
-    
-    
+
     // MARK: - Row
-    
+
     public let text: String = ""
     public let detailText: DetailText? = nil
     public let action: ((Row) -> Void)?
     public var inputValue: String?
     public var placeholder: String?
-    
+
     // MARK: - RowStyle
     public let cellType: UITableViewCell.Type = T.self
-    
+
     public var cellReuseIdentifier: String {
         return "switchRowCellId"
     }
-    
+
     public var cellStyle: UITableViewCell.CellStyle {
         return detailText?.style ?? .default
     }
-    
+
     public let icon: Icon?
     public let accessoryType: UITableViewCell.AccessoryType = .none
     public let isSelectable: Bool = false

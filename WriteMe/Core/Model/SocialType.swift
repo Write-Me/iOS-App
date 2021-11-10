@@ -11,7 +11,7 @@ import UIKit
 public enum SocialType {
     case whatsapp
     case telegram
-    
+
     public var color: UIColor {
         switch self {
         case .whatsapp:
@@ -20,7 +20,7 @@ public enum SocialType {
             return UIColor.telegramm
         }
     }
-    
+
     public var name: String {
         switch self {
         case .whatsapp:
@@ -29,7 +29,7 @@ public enum SocialType {
             return "Telegram"
         }
     }
-    
+
     public var imageName: String {
         switch self {
         case .whatsapp:
@@ -38,7 +38,7 @@ public enum SocialType {
             return "telegram"
         }
     }
-    
+
     public var appUrl: String {
         switch self {
         case .whatsapp:
@@ -47,5 +47,5 @@ public enum SocialType {
             return "https://www.google.com/?client=safari"
         }
     }
-    
+
 }

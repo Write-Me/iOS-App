@@ -17,12 +17,12 @@ protocol PhoneInputInteractorDelegate {
 }
 
 class PhoneInputInteractor {
-    
+
     var presenter: PhoneInputPresentationLogic?
-    
+
     private func checkPhoneNumber(phone: String?) -> Bool {
         guard let phone = phone else { return false }
-        if (phone.count == 0) {
+        if phone.count == 0 {
             return false
         }
         return true
@@ -32,9 +32,8 @@ class PhoneInputInteractor {
 
 extension PhoneInputInteractor: PhoneInputBusinessLogic {
 
-    
     func toApp(_ viewModel: PhoneInputModel.ToApp.Request) {
-        if (!checkPhoneNumber(phone: viewModel.phone)) {
+        if !checkPhoneNumber(phone: viewModel.phone) {
             presenter?.errorPhoneInput()
         } else
         if let url = toAppUrl(viewModel) {
@@ -45,23 +44,21 @@ extension PhoneInputInteractor: PhoneInputBusinessLogic {
             }
         }
     }
-    
+
     private func toAppUrl(_ viewModel: PhoneInputModel.ToApp.Request) -> URL? {
         let url = "\(viewModel.socialType.appUrl)\(viewModel.phone ?? "")\(getTextMessage())"
         return URL(string: url.encodeUrl)
     }
-    
-    private func getTextMessage() -> String
-    {
+
+    private func getTextMessage() -> String {
         var defaultText: String = ""
         let settings = SettingsDefaultsDataStore.shared.get()
-        if (settings.isDefaultTextOn)
-        {
+        if settings.isDefaultTextOn {
             defaultText += "&text=\(settings.defaultText ?? "")"
         }
         return defaultText
     }
-    
+
     func loadSettings(_viewModel: PhoneInputModel.LoadSettings.Request) {
         presenter?.loadSettings(_viewModel: PhoneInputModel.LoadSettings.Response(settings: SettingsDefaultsDataStore.shared.get()))
     }

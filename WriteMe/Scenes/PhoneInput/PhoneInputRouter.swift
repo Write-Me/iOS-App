@@ -13,9 +13,9 @@ protocol PhoneInputRoutingLogic {
 }
 
 class PhoneInputRouter {
-    
+
     weak var viewController: PhoneInputViewController?
-    
+
     private func navigateToSettings(source: PhoneInputViewController?, destination: UINavigationController) {
         source?.present(destination, animated: true, completion: nil)
     }
@@ -31,4 +31,3 @@ extension PhoneInputRouter: PhoneInputRoutingLogic {
         navigateToSettings(source: viewController, destination: nc)
     }
 }
-

@@ -12,27 +12,22 @@
 
 import UIKit
 
-protocol RegionSelectorPresentationLogic
-{
+protocol RegionSelectorPresentationLogic {
     func fetchRegions(response: RegionSelector.FetchRegion.Response)
     func saveRegion(response: RegionSelector.SaveRegion.Response)
 }
 
-class RegionSelectorPresenter: RegionSelectorPresentationLogic
-{
+class RegionSelectorPresenter: RegionSelectorPresentationLogic {
   weak var viewController: RegionSelectorDisplayLogic?
 }
 
-extension RegionSelectorPresenter
-{
-    func fetchRegions(response: RegionSelector.FetchRegion.Response)
-    {
+extension RegionSelectorPresenter {
+    func fetchRegions(response: RegionSelector.FetchRegion.Response) {
       let viewModel = RegionSelector.FetchRegion.ViewModel(regions: response.regions)
       viewController?.fetchRegions(viewModel: viewModel)
     }
-    
-    func saveRegion(response: RegionSelector.SaveRegion.Response)
-    {
+
+    func saveRegion(response: RegionSelector.SaveRegion.Response) {
         let viewModel = RegionSelector.SaveRegion.ViewModel()
         viewController?.saveRegion(viewModel: viewModel)
     }

@@ -17,7 +17,8 @@ protocol MainViewViewer: AnyObject {
 protocol MainPresenterDataSource: AnyObject {
     func setup(objectFor view: MainViewViewer)
     func phoneEntered(_ value: String?, type: SocialType)
-    func openSettings()
+    func openSettings(delegate: MainViewDelegate?)
+    func reloadData()
 }
 
 protocol MainPresenterViewer: AnyObject {

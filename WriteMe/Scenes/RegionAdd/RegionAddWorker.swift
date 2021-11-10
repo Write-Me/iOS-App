@@ -12,9 +12,7 @@
 
 import UIKit
 
-class RegionAddWorker
-{
-  func doSomeWork()
-  {
+class RegionAddWorker {
+  func doSomeWork() {
   }
 }

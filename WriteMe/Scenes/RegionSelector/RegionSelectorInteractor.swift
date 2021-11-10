@@ -13,57 +13,52 @@
 import Foundation
 import Combine
 
-protocol RegionSelectorBusinessLogic
-{
+protocol RegionSelectorBusinessLogic {
     func fetchRegions(reguest: RegionSelector.FetchRegion.Request)
     func saveRegion(reguest: RegionSelector.SaveRegion.Request)
 }
 
-protocol RegionSelectorDataStore
-{
+protocol RegionSelectorDataStore {
 }
 
-class RegionSelectorInteractor: RegionSelectorBusinessLogic, RegionSelectorDataStore
-{
+class RegionSelectorInteractor: RegionSelectorBusinessLogic, RegionSelectorDataStore {
     var presenter: RegionSelectorPresentationLogic?
     var worker: RegionSelectorWorker?
     var regionApiWorker: RegionWorker
     var regionRealmWorker: RegionWorker
-    
+
     private var bindings = Set<AnyCancellable>()
-    
+
     init(
         regionApiWorker: RegionWorker = RegionWorker(service: RegionAPI()),
         regionRealmWorker: RegionWorker = RegionWorker(service: RegionRealmDataStore())
-    )
-    {
+    ) {
         self.regionApiWorker = regionApiWorker
         self.regionRealmWorker = regionRealmWorker
         bind()
         sync()
     }
-    
-    private func bind()
-    {
+
+    private func bind() {
         let regionApiWorkerValueHandler: ([Region]) -> Void = { [weak self] regions in
             self?.regionRealmWorker.saveRegions(regions: regions)
         }
-        
+
         let regionRealmWorkerValueHandler: ([Region]) -> Void = { [weak self] regions in
             self?.presenter?.fetchRegions(response: RegionSelector.FetchRegion.Response(regions: regions))
         }
-        
+
         regionApiWorker.$regions
             .receive(on: RunLoop.main)
             .sink(receiveValue: regionApiWorkerValueHandler)
             .store(in: &bindings)
-        
+
         regionRealmWorker.$regions
             .receive(on: RunLoop.main)
             .sink(receiveValue: regionRealmWorkerValueHandler)
             .store(in: &bindings)
     }
-    
+
     private func sync() {
         self.regionApiWorker.fetchRegions()
     }
@@ -71,14 +66,12 @@ class RegionSelectorInteractor: RegionSelectorBusinessLogic, RegionSelectorDataS
 }
 
 extension RegionSelectorInteractor {
-    
-    func fetchRegions(reguest: RegionSelector.FetchRegion.Request)
-    {
+
+    func fetchRegions(reguest: RegionSelector.FetchRegion.Request) {
         regionRealmWorker.fetchRegions()
     }
-    
-    func saveRegion(reguest: RegionSelector.SaveRegion.Request)
-    {
+
+    func saveRegion(reguest: RegionSelector.SaveRegion.Request) {
         SettingsDefaultsDataStore.shared.saveObject(t: Region?.self, setting: .region, value: reguest.region)
         presenter?.saveRegion(response: RegionSelector.SaveRegion.Response())
     }

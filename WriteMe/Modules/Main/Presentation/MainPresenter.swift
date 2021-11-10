@@ -12,7 +12,7 @@ class MainPresenter {
 
     private weak var viewer: MainViewViewer?
     private var dataSource: MainInteractorDataSource!
-    
+
     private var settings: Settings
     private var viewModel: MainViewModel
 
@@ -29,10 +29,11 @@ class MainPresenter {
 }
 
 extension MainPresenter: MainPresenterDataSource {
-    func openSettings() {
-        MainRouter.settings(context: SettingsFactory.Context()).goto()
+
+    func openSettings(delegate: MainViewDelegate?) {
+        MainRouter.settings(context: SettingsFactory.Context(delegate: delegate)).goto()
     }
-    
+
     func phoneEntered(_ value: String?, type: SocialType) {
         guard checkPhoneNumber(phone: value) else {
             viewer?.errorPhoneInput()
@@ -42,11 +43,16 @@ extension MainPresenter: MainPresenterDataSource {
             viewer?.openUrl(url)
         }
     }
-    
+
     func setup(objectFor view: MainViewViewer) {
         self.viewer = view
         self.dataSource?.setup(objectFor: self)
         self.viewer?.fill(with: viewModel)
+    }
+
+    func reloadData() {
+        viewModel = MainViewModel(SettingsDefaultsDataStore.shared.get())
+        viewer?.fill(with: viewModel)
     }
 }
 
@@ -56,21 +62,20 @@ extension MainPresenter: MainPresenterViewer {
 extension MainPresenter {
     private func checkPhoneNumber(phone: String?) -> Bool {
         guard let phone = phone else { return false }
-        if (phone.count == 0) {
+        if phone.count == 0 {
             return false
         }
         return true
     }
-    
+
     private func toAppUrl(_ phone: String?, type: SocialType) -> URL? {
         let url = "\(type.appUrl)\(phone ?? "")\(getTextMessage())"
         return URL(string: url.encodeUrl)
     }
-    
-    private func getTextMessage() -> String
-    {
+
+    private func getTextMessage() -> String {
         var defaultText: String = ""
-        if (settings.isDefaultTextOn) {
+        if settings.isDefaultTextOn {
             defaultText += "&text=\(settings.defaultText ?? "")"
         }
         return defaultText

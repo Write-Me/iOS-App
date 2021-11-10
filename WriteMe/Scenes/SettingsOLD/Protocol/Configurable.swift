@@ -12,7 +12,6 @@ public protocol Configurable {
   func configure(with row: Row & RowStyle)
 }
 
-
 extension UITableViewCell {
 
   internal func defaultSetUp(with row: Row & RowStyle) {

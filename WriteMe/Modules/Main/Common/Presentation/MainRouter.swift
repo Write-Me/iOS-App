@@ -11,7 +11,8 @@ import UIKit
 enum MainRouter {
     case main(context: MainFactory.Context)
     case settings(context: SettingsFactory.Context)
-    case test(context: SettingsFactory.Context)
+    case regionList(context: RegionListFactory.Context)
+    case region(context: RegionFactory.Context)
 }
 
 extension MainRouter {
@@ -23,8 +24,11 @@ extension MainRouter {
         case .settings(let context):
             try? UIViewController.defRouter.navigate(to: ConfiguratorHolder.configuration.settings,
                                                   with: context, animated: true, completion: nil)
-        case .test(let context):
-            try? UIViewController.defRouter.navigate(to: ConfiguratorHolder.configuration.test,
+        case .regionList(let context):
+            try? UIViewController.defRouter.navigate(to: ConfiguratorHolder.configuration.regionList,
+                                                  with: context, animated: true, completion: nil)
+        case .region(let context):
+            try? UIViewController.defRouter.navigate(to: ConfiguratorHolder.configuration.region,
                                                   with: context, animated: true, completion: nil)
         }
     }

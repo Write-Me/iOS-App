@@ -12,27 +12,22 @@
 
 import UIKit
 
-@objc protocol RegionAddRoutingLogic
-{
+@objc protocol RegionAddRoutingLogic {
     func routeToRegionsSelector()
 }
 
-protocol RegionAddDataPassing
-{
+protocol RegionAddDataPassing {
     var dataStore: RegionAddDataStore? { get }
 }
 
-class RegionAddRouter: NSObject, RegionAddRoutingLogic, RegionAddDataPassing
-{
-    
-    
-    weak var viewController: RegionAddViewController?
+class RegionAddRouter: NSObject, RegionAddRoutingLogic, RegionAddDataPassing {
+
+    weak var viewController: RegionAddOLDViewController?
     var dataStore: RegionAddDataStore?
-    
+
     // MARK: Routing
-    
-    func routeToRegionsSelector()
-    {
+
+    func routeToRegionsSelector() {
         guard let viewController = viewController else { return }
         guard let dataStore = dataStore else { return }
         guard let destinationVC = viewController.navigationController?.previousViewController as? RegionSelectorViewController else { return }
@@ -40,18 +35,16 @@ class RegionAddRouter: NSObject, RegionAddRoutingLogic, RegionAddDataPassing
         passDataToRegionsSelector(source: dataStore, destination: &destinationDS)
         navigateToRegionsSelector(source: viewController, destination: destinationVC)
     }
-    
+
     // MARK: Navigation
-    
-    func navigateToRegionsSelector(source: RegionAddViewController, destination: RegionSelectorViewController)
-    {
+
+    func navigateToRegionsSelector(source: RegionAddOLDViewController, destination: RegionSelectorViewController) {
         source.navigationController?.popViewController(animated: true)
     }
-    
+
     // MARK: Passing data
-    
-    func passDataToRegionsSelector(source: RegionAddDataStore, destination: inout RegionSelectorDataStore)
-    {
-        
+
+    func passDataToRegionsSelector(source: RegionAddDataStore, destination: inout RegionSelectorDataStore) {
+
     }
 }
